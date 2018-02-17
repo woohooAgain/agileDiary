@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="6cbcae79-b3b1-42e6-9e37-962ab4e39a60" ChangeDateTime="02/14/2018 23:53:38">
+    <Property Name="ElementName" Value="[dbo].[Week].[s]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Week]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Day" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6e740721-87bf-47b0-8eba-36e4f0b664db" ChangeDateTime="02/15/2018 00:00:30">
+    <Property Name="ElementName" Value="[dbo].[FK_Day_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Day]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Day_ToHabbit]" />
+  </Operation>
+</Operations>

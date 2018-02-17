@@ -1,0 +1,13 @@
+C:\Projects\AgileDiary\AgileDiary\bin\Debug\netcoreapp2.0\app.db
+C:\Projects\AgileDiary\AgileDiary\bin\Debug\netcoreapp2.0\AgileDiary.deps.json
+C:\Projects\AgileDiary\AgileDiary\bin\Debug\netcoreapp2.0\AgileDiary.runtimeconfig.json
+C:\Projects\AgileDiary\AgileDiary\bin\Debug\netcoreapp2.0\AgileDiary.runtimeconfig.dev.json
+C:\Projects\AgileDiary\AgileDiary\bin\Debug\netcoreapp2.0\AgileDiary.dll
+C:\Projects\AgileDiary\AgileDiary\bin\Debug\netcoreapp2.0\AgileDiary.pdb
+C:\Projects\AgileDiary\AgileDiary\obj\Debug\netcoreapp2.0\AgileDiary.csprojResolveAssemblyReference.cache
+C:\Projects\AgileDiary\AgileDiary\obj\Debug\netcoreapp2.0\AgileDiary.csproj.CoreCompileInputs.cache
+C:\Projects\AgileDiary\AgileDiary\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Projects\AgileDiary\AgileDiary\obj\Debug\netcoreapp2.0\AgileDiary.AssemblyInfoInputs.cache
+C:\Projects\AgileDiary\AgileDiary\obj\Debug\netcoreapp2.0\AgileDiary.AssemblyInfo.cs
+C:\Projects\AgileDiary\AgileDiary\obj\Debug\netcoreapp2.0\AgileDiary.dll
+C:\Projects\AgileDiary\AgileDiary\obj\Debug\netcoreapp2.0\AgileDiary.pdb

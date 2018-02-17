@@ -13129,6 +13129,9 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
       "projectUniqueName": "C:\\Projects\\AgileDiary\\AgileDiary\\AgileDiary.csproj",
       "projectName": "AgileDiary",
