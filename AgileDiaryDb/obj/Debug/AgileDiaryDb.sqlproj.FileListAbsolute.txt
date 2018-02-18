@@ -1,5 +1,0 @@
-C:\Projects\AgileDiary\AgileDiaryDb\bin\Debug\AgileDiaryDb.dacpac
-C:\Projects\AgileDiary\AgileDiaryDb\bin\Debug\AgileDiaryDb.dll
-C:\Projects\AgileDiary\AgileDiaryDb\bin\Debug\AgileDiaryDb.pdb
-C:\Projects\AgileDiary\AgileDiaryDb\obj\Debug\AgileDiaryDb.dll
-C:\Projects\AgileDiary\AgileDiaryDb\obj\Debug\AgileDiaryDb.pdb
