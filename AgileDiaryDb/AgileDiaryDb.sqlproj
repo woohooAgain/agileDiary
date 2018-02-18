@@ -57,20 +57,21 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Sprint.sql" />
-    <Build Include="Day.sql" />
-    <Build Include="DayResult.sql" />
-    <Build Include="Goal.sql" />
-    <Build Include="Milestone.sql" />
-    <Build Include="GoalResult.sql" />
-    <Build Include="Habbit.sql" />
-    <Build Include="HabbitDayResult.sql" />
-    <Build Include="Result.sql" />
-    <Build Include="ResultDescription.sql" />
-    <Build Include="Task.sql" />
-    <Build Include="Week.sql" />
+    <Build Include="Tables\Day.sql" />
+    <Build Include="Tables\DayResult.sql" />
+    <Build Include="Tables\Goal.sql" />
+    <Build Include="Tables\GoalResult.sql" />
+    <Build Include="Tables\Habbit.sql" />
+    <Build Include="Tables\HabbitDayResult.sql" />
+    <Build Include="Tables\Milestone.sql" />
+    <Build Include="Tables\Result.sql" />
+    <Build Include="Tables\ResultDescription.sql" />
+    <Build Include="Tables\Sprint.sql" />
+    <Build Include="Tables\Task.sql" />
+    <Build Include="Tables\Week.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AgileDiaryDb.refactorlog" />

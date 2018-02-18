@@ -1,2 +1,7 @@
 AgileDiaryDb/AgileDiaryDb.dbmdl
 AgileDiaryDb/AgileDiaryDb.jfm
+AgileDiary/obj/**
+AgileDiary/bin/**
+AgileDiary/.vs/**
+AgileDiaryDb/obj/**
+AgileDiaryDb/bin/**
