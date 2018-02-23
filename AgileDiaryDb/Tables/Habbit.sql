@@ -1,5 +1,0 @@
-﻿CREATE TABLE [dbo].[Habbit]
-(
-	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
-    [Title] TEXT NOT NULL
-)
