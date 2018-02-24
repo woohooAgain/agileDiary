@@ -58,22 +58,22 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
-  </ItemGroup>
-  <ItemGroup>
-    <Build Include="Tables\Day.sql" />
-    <Build Include="Tables\DayResult.sql" />
-    <Build Include="Tables\Goal.sql" />
-    <Build Include="Tables\GoalResult.sql" />
-    <Build Include="Tables\Habbit.sql" />
-    <Build Include="Tables\HabbitDayResult.sql" />
-    <Build Include="Tables\Milestone.sql" />
-    <Build Include="Tables\Result.sql" />
-    <Build Include="Tables\ResultDescription.sql" />
-    <Build Include="Tables\Sprint.sql" />
-    <Build Include="Tables\Task.sql" />
-    <Build Include="Tables\Week.sql" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AgileDiaryDb.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Week.sql" />
+    <Build Include="dbo\Tables\TaskForWeek.sql" />
+    <Build Include="dbo\Tables\TaskForDay.sql" />
+    <Build Include="dbo\Tables\Task.sql" />
+    <Build Include="dbo\Tables\Sprint.sql" />
+    <Build Include="dbo\Tables\Milestone.sql" />
+    <Build Include="dbo\Tables\HabbitDayResult.sql" />
+    <Build Include="dbo\Tables\Habbit.sql" />
+    <Build Include="dbo\Tables\Goal.sql" />
+    <Build Include="dbo\Tables\Day.sql" />
   </ItemGroup>
 </Project>
