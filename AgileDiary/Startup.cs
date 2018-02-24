@@ -10,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AgileDiary.Data;
 using AgileDiary.Models;
-using AgileDiary.Models.DB;
 using AgileDiary.Services;
 
 namespace AgileDiary
@@ -29,11 +28,9 @@ namespace AgileDiary
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<AgileDiaryDBContext>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 //.AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddEntityFrameworkStores<AgileDiaryDBContext>()
                 .AddDefaultTokenProviders();
 
             // Add application services.

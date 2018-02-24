@@ -3,24 +3,20 @@ using System.Collections.Generic;
 
 namespace AgileDiary.Models.DB
 {
-    public partial class Goal
+    public class Goal
     {
         public Goal()
         {
-            Day = new HashSet<Day>();
-            Sprint = new HashSet<Sprint>();
-            Week = new HashSet<Week>();
+            Milestone = new HashSet<Milestone>();
         }
 
         public Guid Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public Guid Milestone { get; set; }
         public string Reason { get; set; }
+        public string Result { get; set; }
+        public string Description { get; set; }
+        public Guid Sprint { get; set; }
 
-        public Milestone MilestoneNavigation { get; set; }
-        public ICollection<Day> Day { get; set; }
-        public ICollection<Sprint> Sprint { get; set; }
-        public ICollection<Week> Week { get; set; }
+        public Sprint SprintNavigation { get; set; }
+        public ICollection<Milestone> Milestone { get; set; }
     }
 }

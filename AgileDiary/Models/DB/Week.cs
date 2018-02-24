@@ -3,21 +3,23 @@ using System.Collections.Generic;
 
 namespace AgileDiary.Models.DB
 {
-    public partial class Week
+    public class Week
     {
         public Week()
         {
-            Sprint = new HashSet<Sprint>();
+            Day = new HashSet<Day>();
+            SprintNavigation = new HashSet<Sprint>();
+            TaskForWeek = new HashSet<TaskForWeek>();
         }
 
         public Guid Id { get; set; }
-        public Guid Day { get; set; }
-        public Guid Goal { get; set; }
-        public Guid Result { get; set; }
+        public string Conclusion { get; set; }
+        public string Thanks { get; set; }
+        public Guid Sprint { get; set; }
 
-        public Day DayNavigation { get; set; }
-        public Goal GoalNavigation { get; set; }
-        public Result ResultNavigation { get; set; }
-        public ICollection<Sprint> Sprint { get; set; }
+        public Sprint Sprint1 { get; set; }
+        public ICollection<Day> Day { get; set; }
+        public ICollection<Sprint> SprintNavigation { get; set; }
+        public ICollection<TaskForWeek> TaskForWeek { get; set; }
     }
 }
