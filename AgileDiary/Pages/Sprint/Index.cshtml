@@ -1,0 +1,29 @@
+﻿@using AgileDiary.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model SprintViewModel
+
+@{
+    ViewData["Title"] = "Manage your sprints";
+}
+
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>SprintId</td>
+            </tr>
+        </thead>
+
+        @foreach (var sprintId in Model.Sprints)
+        {
+            <tr>
+                <td>@sprintId</td>
+            </tr>
+        }
+    </table>
+
+    <div class="panel-footer add-item-form">
+        <button type="button" id="add-sprint-button">Add</button>
+    </div>
+</div>
+

@@ -9,8 +9,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AgileDiary.Data;
+using AgileDiary.Interfaces;
 using AgileDiary.Models;
+using AgileDiary.Models.DB;
 using AgileDiary.Services;
+using AgileDiary.Services.AgileDiary;
 
 namespace AgileDiary
 {
@@ -26,17 +29,21 @@ namespace AgileDiary
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AgileDiaryDbContext>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 //.AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<AgileDiaryDbContext>()
                 .AddDefaultTokenProviders();
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+
+            services.AddScoped<ICrud<Sprint>, SprintService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
