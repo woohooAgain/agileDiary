@@ -60,6 +60,7 @@
     <Folder Include="Tables" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
+    <Folder Include="Compares" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AgileDiaryDb.refactorlog" />
@@ -75,5 +76,8 @@
     <Build Include="dbo\Tables\Habbit.sql" />
     <Build Include="dbo\Tables\Goal.sql" />
     <Build Include="dbo\Tables\Day.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Compares\DatabaseToProjectDiff.scmp" />
   </ItemGroup>
 </Project>

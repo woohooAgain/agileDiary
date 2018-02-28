@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AgileDiary.Models.DB
+namespace AgileDiary.Models.db
 {
-    public class Habbit
+    public partial class Habbit
     {
         public Habbit()
         {

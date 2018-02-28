@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace AgileDiary.Models.DB
+namespace AgileDiary.Models.db
 {
-    public class AgileDiaryDbContext : DbContext
+    public partial class agilediarydbContext : DbContext
     {
         public virtual DbSet<Day> Day { get; set; }
         public virtual DbSet<Goal> Goal { get; set; }
@@ -21,7 +22,7 @@ namespace AgileDiary.Models.DB
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=AgileDiaryDb;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=agilediarydb;Trusted_Connection=True;");
             }
         }
 
@@ -31,13 +32,9 @@ namespace AgileDiary.Models.DB
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Achievements)
-                    .IsRequired()
-                    .HasColumnType("text");
+                entity.Property(e => e.Achievements).HasColumnType("text");
 
-                entity.Property(e => e.Thanks)
-                    .IsRequired()
-                    .HasColumnType("text");
+                entity.Property(e => e.Thanks).HasColumnType("text");
 
                 entity.HasOne(d => d.WeekNavigation)
                     .WithMany(p => p.Day)
@@ -50,17 +47,11 @@ namespace AgileDiary.Models.DB
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Description)
-                    .IsRequired()
-                    .HasColumnType("text");
+                entity.Property(e => e.Description).HasColumnType("text");
 
-                entity.Property(e => e.Reason)
-                    .IsRequired()
-                    .HasColumnType("text");
+                entity.Property(e => e.Reason).HasColumnType("text");
 
-                entity.Property(e => e.Result)
-                    .IsRequired()
-                    .HasColumnType("text");
+                entity.Property(e => e.Result).HasColumnType("text");
 
                 entity.HasOne(d => d.SprintNavigation)
                     .WithMany(p => p.Goal)
@@ -101,9 +92,7 @@ namespace AgileDiary.Models.DB
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Description)
-                    .IsRequired()
-                    .HasColumnType("text");
+                entity.Property(e => e.Description).HasColumnType("text");
 
                 entity.HasOne(d => d.GoalNavigation)
                     .WithMany(p => p.Milestone)
@@ -116,36 +105,20 @@ namespace AgileDiary.Models.DB
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Conclusion)
-                    .IsRequired()
-                    .HasColumnType("text");
+                entity.Property(e => e.Conclusion).HasColumnType("text");
 
-                entity.Property(e => e.Improvements)
-                    .IsRequired()
-                    .HasColumnType("text");
+                entity.Property(e => e.Improvements).HasColumnType("text");
 
-                entity.Property(e => e.Reward)
-                    .IsRequired()
-                    .HasColumnType("text");
+                entity.Property(e => e.Reward).HasColumnType("text");
 
-                entity.Property(e => e.Thanks)
-                    .IsRequired()
-                    .HasColumnType("text");
-
-                entity.HasOne(d => d.PerfectWeekNavigation)
-                    .WithMany(p => p.SprintNavigation)
-                    .HasForeignKey(d => d.PerfectWeek)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Sprint_Week");
+                entity.Property(e => e.Thanks).HasColumnType("text");
             });
 
             modelBuilder.Entity<Task>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Description)
-                    .IsRequired()
-                    .HasColumnType("text");
+                entity.Property(e => e.Description).HasColumnType("text");
 
                 entity.Property(e => e.EndTime).HasColumnType("datetime");
 
@@ -192,15 +165,11 @@ namespace AgileDiary.Models.DB
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Conclusion)
-                    .IsRequired()
-                    .HasColumnType("text");
+                entity.Property(e => e.Conclusion).HasColumnType("text");
 
-                entity.Property(e => e.Thanks)
-                    .IsRequired()
-                    .HasColumnType("text");
+                entity.Property(e => e.Thanks).HasColumnType("text");
 
-                entity.HasOne(d => d.Sprint1)
+                entity.HasOne(d => d.SprintNavigation)
                     .WithMany(p => p.Week)
                     .HasForeignKey(d => d.Sprint)
                     .OnDelete(DeleteBehavior.ClientSetNull)

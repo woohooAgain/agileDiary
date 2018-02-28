@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AgileDiary.Models.DB
+namespace AgileDiary.Models.db
 {
-    public class Goal
+    public partial class Goal
     {
         public Goal()
         {

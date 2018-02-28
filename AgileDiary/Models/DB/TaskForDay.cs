@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace AgileDiary.Models.DB
+namespace AgileDiary.Models.db
 {
-    public class TaskForDay
+    public partial class TaskForDay
     {
         public Guid Task { get; set; }
         public Guid Day { get; set; }
