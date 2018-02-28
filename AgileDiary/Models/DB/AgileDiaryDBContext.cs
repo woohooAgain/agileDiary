@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace AgileDiary.Models.db
+namespace AgileDiary.Models.Db
 {
-    public partial class agilediarydbContext : DbContext
+    public partial class AgilediarydbContext : DbContext
     {
         public virtual DbSet<Day> Day { get; set; }
         public virtual DbSet<Goal> Goal { get; set; }

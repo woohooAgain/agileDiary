@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AgileDiary.Interfaces;
 using AgileDiary.Models;
-using AgileDiary.Models.DB;
+using AgileDiary.Models.Db;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.OData.Query.SemanticAst;
 
