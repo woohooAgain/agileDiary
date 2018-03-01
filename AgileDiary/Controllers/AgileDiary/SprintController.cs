@@ -20,19 +20,19 @@ namespace AgileDiary.Controllers.AgileDiary
 
         public IActionResult Index()
         {
-            var sprints = new List<Guid>
-            {
-                Guid.NewGuid()
-            };
+            //var sprints = new List<Guid>
+            //{
+            //    Guid.NewGuid()
+            //};
             var model = new SprintViewModel
             {
-                Sprints = sprints
+                Sprints = sprintService.ListAll()
             };
             return View(model);
         }
 
         //public Task<IActionResult> AddItem(Sprint newSprint)
-        public IActionResult CreateSprint(Sprint newSprint)
+        public IActionResult CreateSprint()
         {
             //if (!ModelState.IsValid)
             //{
@@ -40,7 +40,7 @@ namespace AgileDiary.Controllers.AgileDiary
             //}
 
             //var succesfull = sprintService.Create(newSprint);
-            sprintService.Create(newSprint);
+            sprintService.Create();
             //if (!succesfull)
             //{
             //    return BadRequest(new

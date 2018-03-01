@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace AgileDiary.Models.Db
 {
-    public partial class AgilediarydbContext : DbContext
+    public partial class AgileDiaryDBContext : DbContext
     {
         public virtual DbSet<Day> Day { get; set; }
         public virtual DbSet<Goal> Goal { get; set; }

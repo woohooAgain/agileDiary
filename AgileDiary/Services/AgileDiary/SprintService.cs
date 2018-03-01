@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AgileDiary.Interfaces;
 using AgileDiary.Models.Db;
 
@@ -9,9 +8,15 @@ namespace AgileDiary.Services.AgileDiary
 {
     public class SprintService : ICrud<Sprint>
     {
+        private readonly AgileDiaryDBContext _context;
+
+        public SprintService(AgileDiaryDBContext context)
+        {
+            _context = context;
+        }
         public IEnumerable<Guid> ListAll()
         {
-            throw new NotImplementedException();
+            return _context.Sprint.Select(s => s.Id);
         }
 
         public Sprint Get(Guid id)
@@ -19,9 +24,15 @@ namespace AgileDiary.Services.AgileDiary
             throw new NotImplementedException();
         }
 
-        public Guid Create(Sprint obj)
+        public Guid Create()
         {
-            throw new NotImplementedException();
+            var newSprint = new Sprint
+            {
+                Id = Guid.NewGuid()
+            };
+            _context.Sprint.Add(newSprint);
+            _context.SaveChanges();
+            return newSprint.Id;
         }
 
         public Guid Edit(Sprint obj)

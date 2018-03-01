@@ -21,6 +21,9 @@
         @foreach (var sprintId in Model.Sprints)
         {
             <tr>
+                <td>
+                    <input type="checkbox" name="@sprintId" value="false" class="done-checkbox" />
+                </td>
                 <td>@sprintId</td>
             </tr>
         }

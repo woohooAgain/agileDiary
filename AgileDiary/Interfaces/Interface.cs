@@ -7,7 +7,7 @@ namespace AgileDiary.Interfaces
     {
         IEnumerable<Guid> ListAll();
         T Get(Guid id);
-        Guid Create(T obj);
+        Guid Create();
         Guid Edit(T obj);
         void Delete(Guid id);
     }

@@ -31,11 +31,11 @@ namespace AgileDiary
         {
             //services.AddDbContext<ApplicationDbContext>(options =>
             //    options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<AgilediarydbContext>();
+            services.AddDbContext<AgileDiaryDBContext>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 //.AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddEntityFrameworkStores<AgileDiaryDbContext>()
+                .AddEntityFrameworkStores<AgileDiaryDBContext>()
                 .AddDefaultTokenProviders();
 
             // Add application services.

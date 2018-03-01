@@ -4,8 +4,7 @@
 
 function createSprint() {
     $('#add-item-error').hide();
-    var newTitle = $('#add-item-title').val();
-    $.post('/Sprint/CreateSprint', { title: newTitle }, function () {
+    $.post('/Sprint/CreateSprint', function () {
         window.location = '/Sprint';
     });
 }
