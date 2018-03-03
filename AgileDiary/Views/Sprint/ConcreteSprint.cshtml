@@ -1,4 +1,5 @@
-﻿
+﻿@using AgileDiary.Models.AgileDiaryViewModels
+@model ConcreteSprintViewModel
 @{
     Layout = null;
 }
@@ -14,17 +15,17 @@
     <h2>SprintId</h2>
     <h4>Goals</h4>
     <ul>
-        <li><a title="Goal 1" href="Goal 1">Goal 1</a></li>
-        <li><a title="Goal 1" href="Goal 1">Goal 1</a></li>
-        <li><a title="Goal 1" href="Goal 1">Goal 1</a></li>
+        @foreach (var goal in Model.Goal)
+        {
+            <li><a asp-controller="Account" asp-action="Register" asp-route-id="@goal.Id">@goal.Description</a></li>
+        }
     </ul>
     <h4>Habbits</h4>
     <ul>
-        <li><a title="Habbit1" href="Habbit1">Habbit1</a></li>
-        <li><a title="Habbit1" href="Habbit1">Habbit1</a></li>
-        <li><a title="Habbit1" href="Habbit1">Habbit1</a></li>
-        <li><a title="Habbit1" href="Habbit1">Habbit1</a></li>
-        <li><a title="Habbit1" href="Habbit1">Habbit1</a></li>
+        @foreach (var habbit in Model.Habbit)
+        {
+            <li><a asp-controller="Account" asp-action="Register" asp-route-id="@habbit.Id">@habbit.Id</a></li>
+        }
     </ul>
     <h4>Weeks</h4>
     <ul>

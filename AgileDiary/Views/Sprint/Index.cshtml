@@ -25,7 +25,7 @@
                 <td>
                     <input type="checkbox" name="@sprintId" value="false" class="done-checkbox" />
                 </td>
-                <td><a href="localhost:8081/Sprint/{@sprintId}">@sprintId</a></td>
+                <td><a asp-controller="Sprint" asp-action="ConcreteSprint" asp-route-id="@sprintId">@sprintId</a></td>
             </tr>
         }
     </table>
