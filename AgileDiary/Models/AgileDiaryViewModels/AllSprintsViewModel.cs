@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AgileDiary.Models
+namespace AgileDiary.Models.AgileDiaryViewModels
 {
-    public class SprintViewModel
+    public class AllSprintsViewModel
     {
         public IEnumerable<Guid> Sprints { get; set; }
     }

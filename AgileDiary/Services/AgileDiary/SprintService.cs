@@ -18,10 +18,10 @@ namespace AgileDiary.Services.AgileDiary
         {
             return _context.Sprint.Select(s => s.Id);
         }
-
+          
         public Sprint Get(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.Sprint.FirstOrDefault(s => s.Id == id);
         }
 
         public Guid Create()

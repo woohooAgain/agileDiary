@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AgileDiary.Interfaces;
 using AgileDiary.Models;
+using AgileDiary.Models.AgileDiaryViewModels;
 using AgileDiary.Models.Db;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.OData.Query.SemanticAst;
@@ -18,36 +19,38 @@ namespace AgileDiary.Controllers.AgileDiary
             this.sprintService = sprintService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            //var sprints = new List<Guid>
-            //{
-            //    Guid.NewGuid()
-            //};
-            var model = new SprintViewModel
+            var model = new AllSprintsViewModel
             {
                 Sprints = sprintService.ListAll()
             };
             return View(model);
         }
 
-        //public Task<IActionResult> AddItem(Sprint newSprint)
+        [HttpGet]
+        [Route("Sprint/{id}")]
+        public IActionResult ConcreteSprint(Guid id)
+        {
+            var sprint = sprintService.Get(id);
+            var model = new ConcreteSprintViewModel
+            {
+                Id = sprint.Id,
+                Conclusion = sprint.Conclusion,
+                Goal = sprint.Goal,
+                Habbit = sprint.Habbit,
+                Improvements = sprint.Improvements,
+                Reward = sprint.Reward,
+                Thanks = sprint.Thanks,
+                Week = sprint.Week
+            };
+            return View(model);
+        }
+
         public IActionResult CreateSprint()
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
-
-            //var succesfull = sprintService.Create(newSprint);
             sprintService.Create();
-            //if (!succesfull)
-            //{
-            //    return BadRequest(new
-            //    {
-            //        error = "Could not add item"
-            //    });
-            //}
             return Ok();
         }
     }
