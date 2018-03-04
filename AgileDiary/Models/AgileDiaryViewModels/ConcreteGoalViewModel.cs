@@ -2,7 +2,7 @@
 
 namespace AgileDiary.Models.AgileDiaryViewModels
 {
-    public class ConcreteSprintViewModel : Sprint
+    public class ConcreteGoalViewModel : Goal
     {
     }
 }

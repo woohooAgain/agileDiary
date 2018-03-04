@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AgileDiary.Interfaces;
-using AgileDiary.Models;
 using AgileDiary.Models.AgileDiaryViewModels;
 using AgileDiary.Models.Db;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.OData.Query.SemanticAst;
 
 namespace AgileDiary.Controllers.AgileDiary
 {
@@ -50,8 +45,13 @@ namespace AgileDiary.Controllers.AgileDiary
 
         public IActionResult CreateSprint()
         {
-            sprintService.Create();
-            return Ok();
+            var newSprintId = sprintService.Create();
+            var model = new ConcreteSprintViewModel
+            {
+                Id = newSprintId
+            };
+            //return View("ConcreteSprint", model);
+            return Ok(newSprintId);
         }
     }
 }

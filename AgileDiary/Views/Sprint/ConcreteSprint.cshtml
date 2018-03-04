@@ -4,6 +4,11 @@
     Layout = null;
 }
 
+<environment exclude="Development">
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+    <script src="~/js/AgileDiary/Goal.min.js" asp-append-version="true"></script>
+</environment>
+
 <!DOCTYPE html>
 
 <html>
@@ -12,21 +17,27 @@
     <title>SprintEditor</title>
 </head>
 <body>
-    <h2>SprintId</h2>
+    <h2>@Model.Id</h2>
     <h4>Goals</h4>
     <ul>
         @foreach (var goal in Model.Goal)
         {
-            <li><a asp-controller="Account" asp-action="Register" asp-route-id="@goal.Id">@goal.Description</a></li>
+            <li><a asp-controller="Goal" asp-action="ConcreteGoal" asp-route-id="@goal.Id">@goal.Description</a></li>
         }
     </ul>
+    <div class="panel-footer add-goal add-item">
+        <button type="button" id="add-goal-button">Add</button>
+    </div>
     <h4>Habbits</h4>
     <ul>
         @foreach (var habbit in Model.Habbit)
         {
-            <li><a asp-controller="Account" asp-action="Register" asp-route-id="@habbit.Id">@habbit.Id</a></li>
+            <li><a asp-controller="Habit" asp-action="GetHabit" asp-route-id="@habbit.Id">@habbit.Id</a></li>
         }
     </ul>
+    <div class="panel-footer add-habit add-item">
+        <button type="button" id="add-habit-button">Add</button>
+    </div>
     <h4>Weeks</h4>
     <ul>
         <li><a href="Previous Week">Previous Week</a></li>

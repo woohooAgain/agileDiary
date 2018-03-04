@@ -4,7 +4,7 @@
 
 function createSprint() {
     $('#add-item-error').hide();
-    $.post('/Sprint/CreateSprint', function () {
-        window.location = '/Sprint';
+    $.post('/Sprint/CreateSprint', function (response) {
+        window.location = '/Sprint/' + response;
     });
 }

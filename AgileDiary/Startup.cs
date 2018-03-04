@@ -44,6 +44,7 @@ namespace AgileDiary
             services.AddMvc();
 
             services.AddScoped<ICrud<Sprint>, SprintService>();
+            services.AddScoped<ICrud<Goal>, GoalService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

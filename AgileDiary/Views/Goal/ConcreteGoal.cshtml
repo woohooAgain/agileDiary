@@ -1,0 +1,29 @@
+﻿@using AgileDiary.Models.AgileDiaryViewModels
+@model ConcreteGoalViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GoalEditor</title>
+</head>
+<body>
+    <h2>@Model.Description</h2>
+    <h4>Reason</h4>
+    <div>@Model.Reason</div>
+    <div class="panel-footer edit-button-block">
+        <button type="button" id="add-goal-reason-button">Add</button>
+        <button type="button" id="edit-goal-reason-button">Edit</button>
+    </div>
+    <h4>Result</h4>
+    <div>@Model.Result</div>
+    <div class="panel-footer edit-button-block">
+        <button type="button" id="add-goal-result-button">Add</button>
+        <button type="button" id="edit-goal-result-button">Edit</button>
+    </div>
+</body>
+</html>
