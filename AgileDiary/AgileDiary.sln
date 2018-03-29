@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgileDiary", "AgileDiary.csproj", "{3912659B-FA6E-4A8D-A6F7-11D67EE4B941}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AgileDiaryDb", "..\AgileDiaryDb\AgileDiaryDb.sqlproj", "{AC6F47D6-B9DD-4CCC-8CBF-DDE6B908F4CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AltAgileDiary", "..\AltAgileDiary\AltAgileDiary.csproj", "{FC67D8A5-2F1D-444D-968A-F82D67C861FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +24,10 @@ Global
 		{AC6F47D6-B9DD-4CCC-8CBF-DDE6B908F4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC6F47D6-B9DD-4CCC-8CBF-DDE6B908F4CF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC6F47D6-B9DD-4CCC-8CBF-DDE6B908F4CF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FC67D8A5-2F1D-444D-968A-F82D67C861FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC67D8A5-2F1D-444D-968A-F82D67C861FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC67D8A5-2F1D-444D-968A-F82D67C861FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC67D8A5-2F1D-444D-968A-F82D67C861FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
