@@ -4,16 +4,18 @@
     Layout = null;
 }
 
-<environment exclude="Development">
+@*<environment exclude="Development">
     <script src="~/js/site.min.js" asp-append-version="true"></script>
     <script src="~/js/AgileDiary/Goal.min.js" asp-append-version="true"></script>
-</environment>
+</environment>*@
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/AgileDiary/Goal.min.js" asp-append-version="true"></script>
     <title>SprintEditor</title>
 </head>
 <body>
@@ -45,7 +47,7 @@
         <li><a href="Next Week">Next Week</a></li>
     </ul>
     <h4>Reward</h4>
-    <p style="padding-left: 30px;">Reward text</p>
+    <p style="padding-left: 30px;">@Model.Reward</p>
     <h4>Conclusion</h4>
     <p style="padding-left: 30px;">Conclusion text</p>
     <h4>Thanks</h4>

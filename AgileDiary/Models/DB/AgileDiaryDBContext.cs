@@ -17,14 +17,19 @@ namespace AgileDiary.Models.Db
         public virtual DbSet<TaskForWeek> TaskForWeek { get; set; }
         public virtual DbSet<Week> Week { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        public AgileDiaryDBContext(DbContextOptions<AgileDiaryDBContext> options)
+            : base(options)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=agilediarydb;Trusted_Connection=True;");
-            }
         }
+        //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //        {
+        //            if (!optionsBuilder.IsConfigured)
+        //            {
+        //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+        //                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=agilediarydb;Trusted_Connection=True;");
+        //            }
+        //        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

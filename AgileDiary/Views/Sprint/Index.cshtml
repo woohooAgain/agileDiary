@@ -15,12 +15,13 @@
 
         @foreach (var sprintId in Model.Sprints)
         {
-            <tr>
-                <td>
-                    <input type="checkbox" name="@sprintId" value="false" class="done-checkbox" />
-                </td>
-                <td><a asp-controller="Sprint" asp-action="ConcreteSprint" asp-route-id="@sprintId">@sprintId</a></td>
-            </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="@sprintId" value="false" class="done-checkbox" />
+            </td>
+            <td><a asp-controller="Sprint" asp-action="ConcreteSprint" asp-route-id="@sprintId">@sprintId</a></td>
+            <td><a asp-controller="Sprint" asp-action="Delete" asp-route-id="@sprintId">Delete</a></td>
+        </tr>
         }
     </table>
 

@@ -24,6 +24,11 @@ namespace AgileDiary.Services.AgileDiary
             throw new NotImplementedException();
         }
 
+        public Guid Create(Guid sprintId)
+        {
+            throw new NotImplementedException();
+        }
+
         public Guid Create()
         {
             throw new NotImplementedException();

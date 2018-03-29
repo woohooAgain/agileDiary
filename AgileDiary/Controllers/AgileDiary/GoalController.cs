@@ -14,9 +14,22 @@ namespace AgileDiary.Controllers.AgileDiary
             _goalService = goalService;
         }
 
-        public IActionResult ConcreteGoal(Guid id)
+        [HttpGet]
+        [Route("Goal")]
+        public IActionResult Index()
         {
-            var goal = _goalService.Get(id);
+            var model = new AllGoalsViewModel
+            {
+                Goals = _goalService.ListAll()
+            };
+            return View("AllGoalsViewModel", model);
+        }
+
+        [HttpGet]
+        [Route("Goal/{goalId}")]
+        public IActionResult ConcreteGoal(Guid goalId)
+        {
+            var goal = _goalService.Get(goalId);
             var model = new ConcreteGoalViewModel
             {
                 Id = goal.Id,
@@ -30,14 +43,12 @@ namespace AgileDiary.Controllers.AgileDiary
             return View(model);
         }
 
-        public IActionResult CreateGoal()
+        [HttpPost]
+        [Route("Goal/{sprintId}")]
+        public IActionResult CreateGoal(Guid sprintId)
         {
-            var newGoalId = _goalService.Create();
-            var model = new ConcreteGoalViewModel
-            {
-                Id = newGoalId
-            };
-            return View("ConcreteGoal", model);
+            var newGoalId = _goalService.Create(sprintId);
+            return Ok(newGoalId);
         }
     }
 }

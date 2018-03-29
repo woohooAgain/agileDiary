@@ -35,14 +35,27 @@ namespace AgileDiary.Services.AgileDiary
             return newSprint.Id;
         }
 
-        public Guid Edit(Sprint obj)
+        public Guid Create(Guid id)
         {
             throw new NotImplementedException();
         }
 
+        public Guid Edit(Sprint obj)
+        {
+            _context.Sprint.Update(obj);
+            _context.SaveChanges();
+            return obj.Id;
+        }
+
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            var sprintToRemove = Get(id);
+            foreach (var goal in sprintToRemove.Goal)
+            {
+                _context.Goal.Remove(goal);
+            }
+            _context.Sprint.Remove(sprintToRemove);
+            _context.SaveChanges();
         }
     }
 }

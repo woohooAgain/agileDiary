@@ -8,10 +8,10 @@ namespace AgileDiary.Controllers.AgileDiary
 {
     public class SprintController : Controller
     {
-        private readonly ICrud<Sprint> sprintService;
+        private readonly ICrud<Sprint> _sprintService;
         public SprintController(ICrud<Sprint> sprintService)
         {
-            this.sprintService = sprintService;
+            this._sprintService = sprintService;
         }
 
         [HttpGet]
@@ -19,7 +19,7 @@ namespace AgileDiary.Controllers.AgileDiary
         {
             var model = new AllSprintsViewModel
             {
-                Sprints = sprintService.ListAll()
+                Sprints = _sprintService.ListAll()
             };
             return View(model);
         }
@@ -28,7 +28,7 @@ namespace AgileDiary.Controllers.AgileDiary
         [Route("Sprint/{id}")]
         public IActionResult ConcreteSprint(Guid id)
         {
-            var sprint = sprintService.Get(id);
+            var sprint = _sprintService.Get(id);
             var model = new ConcreteSprintViewModel
             {
                 Id = sprint.Id,
@@ -45,13 +45,19 @@ namespace AgileDiary.Controllers.AgileDiary
 
         public IActionResult CreateSprint()
         {
-            var newSprintId = sprintService.Create();
-            var model = new ConcreteSprintViewModel
-            {
-                Id = newSprintId
-            };
-            //return View("ConcreteSprint", model);
+            var newSprintId = _sprintService.Create();
             return Ok(newSprintId);
+        }
+
+        [Route("Sprint/Delete/{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            _sprintService.Delete(id);
+            var model = new AllSprintsViewModel
+            {
+                Sprints = _sprintService.ListAll()
+            };
+            return View("Index", model);
         }
     }
 }
