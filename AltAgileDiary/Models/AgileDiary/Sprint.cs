@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AltAgileDiary.Models.AgileDiary
 {
@@ -10,7 +11,11 @@ namespace AltAgileDiary.Models.AgileDiary
         public string Thanks { get; set; }
         public string Improvements { get; set; }
         public string Reward { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Start { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime End { get; set; }
 
         public ICollection<Goal> Goals { get; set; }

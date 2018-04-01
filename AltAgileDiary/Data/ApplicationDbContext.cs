@@ -13,6 +13,8 @@ namespace AltAgileDiary.Data
     {
         public DbSet<Sprint> Sprints { get; set; }
 
+        public DbSet<Goal> Goal { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

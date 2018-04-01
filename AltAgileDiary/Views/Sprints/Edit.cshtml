@@ -44,6 +44,24 @@
                 <span asp-validation-for="End" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Goals" class="control-label"></label>
+                @if (Model != null)
+                {
+                    if (Model.Goals != null && Model.Goals.Any())
+                    {
+                        <ul>
+                            @foreach (var goal in Model.Goals)
+                            {
+                                <li>@Html.DisplayFor(goalItem => goal.Description)</li>
+                            }
+                        </ul>
+                    }
+                    <div>
+                        <a asp-controller="Goals" asp-action="Create" asp-route-id="@Model.Id">Create goal</a>
+                    </div>
+                }
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>

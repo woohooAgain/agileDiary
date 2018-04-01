@@ -10,22 +10,22 @@ using AltAgileDiary.Models.AgileDiary;
 
 namespace AltAgileDiary.Controllers
 {
-    public class SprintsController : Controller
+    public class GoalsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public SprintsController(ApplicationDbContext context)
+        public GoalsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Sprints
+        // GET: Goals
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Sprints.ToListAsync());
+            return View(await _context.Goal.ToListAsync());
         }
 
-        // GET: Sprints/Details/5
+        // GET: Goals/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -33,62 +33,76 @@ namespace AltAgileDiary.Controllers
                 return NotFound();
             }
 
-            var sprint = await _context.Sprints
+            var goal = await _context.Goal
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (sprint == null)
+            if (goal == null)
             {
                 return NotFound();
             }
 
-            return View(sprint);
+            return View(goal);
         }
 
-        // GET: Sprints/Create
-        public IActionResult Create()
+        // GET: Goals/Create
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
+
+        [HttpGet]
+        [Route("Goals/Create/{sprintId}")]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(string sprintId)
         {
-            return View();
+            var id = new Guid(sprintId);
+            var goal = new Goal
+            {
+                SprintId = id
+            };
+            return View(goal);
         }
 
-        // POST: Sprints/Create
+        // POST: Goals/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Conclusion,Thanks,Improvements,Reward,Start,End")] Sprint sprint)
+        public async Task<IActionResult> Create(Goal goal)
         {
             if (ModelState.IsValid)
             {
-                sprint.Id = Guid.NewGuid();
-                _context.Add(sprint);
+                goal.Id = Guid.NewGuid();
+                _context.Add(goal);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(sprint);
+            return View(goal);
         }
 
-        // GET: Sprints/Edit/5
+        // GET: Goals/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var sprint = await _context.Sprints.Include(m => m.Goals).SingleOrDefaultAsync(m => m.Id == id);
-            if (sprint == null)
+
+            var goal = await _context.Goal.SingleOrDefaultAsync(m => m.Id == id);
+            if (goal == null)
             {
                 return NotFound();
             }
-            return View(sprint);
+            return View(goal);
         }
 
-        // POST: Sprints/Edit/5
+        // POST: Goals/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Conclusion,Thanks,Improvements,Reward,Start,End")] Sprint sprint)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Reason,Result,Description")] Goal goal)
         {
-            if (id != sprint.Id)
+            if (id != goal.Id)
             {
                 return NotFound();
             }
@@ -97,12 +111,12 @@ namespace AltAgileDiary.Controllers
             {
                 try
                 {
-                    _context.Update(sprint);
+                    _context.Update(goal);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SprintExists(sprint.Id))
+                    if (!GoalExists(goal.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +127,10 @@ namespace AltAgileDiary.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(sprint);
+            return View(goal);
         }
 
-        // GET: Sprints/Delete/5
+        // GET: Goals/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -124,30 +138,30 @@ namespace AltAgileDiary.Controllers
                 return NotFound();
             }
 
-            var sprint = await _context.Sprints
+            var goal = await _context.Goal
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (sprint == null)
+            if (goal == null)
             {
                 return NotFound();
             }
 
-            return View(sprint);
+            return View(goal);
         }
 
-        // POST: Sprints/Delete/5
+        // POST: Goals/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var sprint = await _context.Sprints.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Sprints.Remove(sprint);
+            var goal = await _context.Goal.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Goal.Remove(goal);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SprintExists(Guid id)
+        private bool GoalExists(Guid id)
         {
-            return _context.Sprints.Any(e => e.Id == id);
+            return _context.Goal.Any(e => e.Id == id);
         }
     }
 }

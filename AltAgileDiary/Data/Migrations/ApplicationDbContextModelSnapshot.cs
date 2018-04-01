@@ -31,7 +31,7 @@ namespace AltAgileDiary.Data.Migrations
 
                     b.Property<string>("Result");
 
-                    b.Property<Guid?>("SprintId");
+                    b.Property<Guid>("SprintId");
 
                     b.HasKey("Id");
 
@@ -261,7 +261,8 @@ namespace AltAgileDiary.Data.Migrations
                 {
                     b.HasOne("AltAgileDiary.Models.AgileDiary.Sprint", "Sprint")
                         .WithMany("Goals")
-                        .HasForeignKey("SprintId");
+                        .HasForeignKey("SprintId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("AltAgileDiary.Models.AgileDiary.Habit", b =>

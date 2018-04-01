@@ -9,6 +9,7 @@ namespace AltAgileDiary.Models.AgileDiary
         public string Result { get; set; }
         public string Description { get; set; }
 
+        public Guid SprintId { get; set; }
         public Sprint Sprint { get; set; }
     }
 }
