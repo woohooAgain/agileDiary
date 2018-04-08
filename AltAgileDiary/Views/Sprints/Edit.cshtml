@@ -8,42 +8,49 @@
 
 <h4>Sprint</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="container">
+    <div class="row">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Conclusion" class="control-label"></label>
-                <input asp-for="Conclusion" class="form-control" />
-                <span asp-validation-for="Conclusion" class="text-danger"></span>
+            <div class="col-md-4">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Conclusion" class="control-label"></label>
+                    <input asp-for="Conclusion" class="form-control" />
+                    <span asp-validation-for="Conclusion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Thanks" class="control-label"></label>
+                    <input asp-for="Thanks" class="form-control" />
+                    <span asp-validation-for="Thanks" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Improvements" class="control-label"></label>
+                    <input asp-for="Improvements" class="form-control" />
+                    <span asp-validation-for="Improvements" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Reward" class="control-label"></label>
+                    <input asp-for="Reward" class="form-control" />
+                    <span asp-validation-for="Reward" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Start" class="control-label"></label>
+                    <input asp-for="Start" class="form-control" />
+                    <span asp-validation-for="Start" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="End" class="control-label"></label>
+                    <input asp-for="End" class="form-control" readonly/>
+                    <span asp-validation-for="End" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+
             </div>
-            <div class="form-group">
-                <label asp-for="Thanks" class="control-label"></label>
-                <input asp-for="Thanks" class="form-control" />
-                <span asp-validation-for="Thanks" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Improvements" class="control-label"></label>
-                <input asp-for="Improvements" class="form-control" />
-                <span asp-validation-for="Improvements" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Reward" class="control-label"></label>
-                <input asp-for="Reward" class="form-control" />
-                <span asp-validation-for="Reward" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Start" class="control-label"></label>
-                <input asp-for="Start" class="form-control" />
-                <span asp-validation-for="Start" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="End" class="control-label"></label>
-                <input asp-for="End" class="form-control" />
-                <span asp-validation-for="End" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <div class="form-group col-md-4 col-md-offset-1">
                 <label asp-for="Goals" class="control-label"></label>
                 @if (Model != null)
                 {
@@ -52,21 +59,37 @@
                         <ul>
                             @foreach (var goal in Model.Goals)
                             {
-                                <li>@Html.DisplayFor(goalItem => goal.Description)</li>
+                                <li><a asp-controller="Goals" asp-action="Edit" asp-route-id="@goal.Id">@Html.DisplayFor(goalItem => goal.Description)</a></li>
                             }
                         </ul>
                     }
                     <div>
-                        <a asp-controller="Goals" asp-action="Create" asp-route-id="@Model.Id">Create goal</a>
+                        <a asp-controller="Goals" asp-action="Create" asp-route-id="@Model.Id">Add new goal</a>
                     </div>
                 }
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="form-group col-md-3 col-md-offset-1">
+                <label asp-for="Habits" class="control-label"></label>
+                @if (Model != null)
+                {
+                    if (Model.Habits != null && Model.Habits.Any())
+                    {
+                        <ul>
+                            @foreach (var habit in Model.Habits)
+                            {
+                                <li><a asp-controller="Habits" asp-action="Edit" asp-route-id="@habit.Id">@Html.DisplayFor(goalItem => habit.Title)</a></li>
+                            }
+                        </ul>
+                    }
+                    <div>
+                        <a asp-controller="Habits" asp-action="Create" asp-route-id="@Model.Id">Add new habit</a>
+                    </div>
+                }
             </div>
         </form>
     </div>
 </div>
+
 
 <div>
     <a asp-action="Index">Back to List</a>

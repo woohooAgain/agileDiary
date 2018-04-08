@@ -59,9 +59,10 @@ namespace AltAgileDiary.Controllers
             if (ModelState.IsValid)
             {
                 sprint.Id = Guid.NewGuid();
+                sprint.End = sprint.Start + TimeSpan.FromDays(62);
                 _context.Add(sprint);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return View(@"~/Views/Sprints/Edit.cshtml", sprint);
             }
             return View(sprint);
         }
@@ -73,7 +74,8 @@ namespace AltAgileDiary.Controllers
             {
                 return NotFound();
             }
-            var sprint = await _context.Sprints.Include(m => m.Goals).SingleOrDefaultAsync(m => m.Id == id);
+            var sprint = await _context.Sprints.Include(m => m.Goals).Include(m => m.Habits)
+                .SingleOrDefaultAsync(m => m.Id == id);
             if (sprint == null)
             {
                 return NotFound();
@@ -97,6 +99,7 @@ namespace AltAgileDiary.Controllers
             {
                 try
                 {
+                    sprint.End = sprint.Start + TimeSpan.FromDays(62);
                     _context.Update(sprint);
                     await _context.SaveChangesAsync();
                 }

@@ -11,9 +11,10 @@ using System;
 namespace AltAgileDiary.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180401072534_addSprintId")]
+    partial class addSprintId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,9 +48,7 @@ namespace AltAgileDiary.Data.Migrations
 
                     b.Property<int>("MaxChainLength");
 
-                    b.Property<Guid>("SprintId");
-
-                    b.Property<string>("Title");
+                    b.Property<Guid?>("SprintId");
 
                     b.Property<int>("Total");
 
@@ -271,8 +270,7 @@ namespace AltAgileDiary.Data.Migrations
                 {
                     b.HasOne("AltAgileDiary.Models.AgileDiary.Sprint", "Sprint")
                         .WithMany("Habits")
-                        .HasForeignKey("SprintId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("SprintId");
                 });
 
             modelBuilder.Entity("AltAgileDiary.Models.AgileDiary.Week", b =>
