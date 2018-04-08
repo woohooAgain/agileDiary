@@ -28,5 +28,7 @@ namespace AltAgileDiary.Data
             // Add your customizations after calling base.OnModelCreating(builder);
             builder.Entity<Sprint>().ToTable("Sprint");
         }
+
+        public DbSet<AltAgileDiary.Models.AgileDiary.Habit> Habit { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AltAgileDiary.Data;
+using AltAgileDiary.Data.Migrations;
 using AltAgileDiary.Models.AgileDiary;
 
 namespace AltAgileDiary.Controllers
@@ -102,7 +103,7 @@ namespace AltAgileDiary.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Reason,Result,Description")] Goal goal)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Reason,Result,Description,SprintId")] Goal goal)
         {
             if (id != goal.Id)
             {

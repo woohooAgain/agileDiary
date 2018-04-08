@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AltAgileDiary.Models.AgileDiary.Goal>
+﻿@model IEnumerable<AltAgileDiary.Models.AgileDiary.Habit>
 
 @{
     ViewData["Title"] = "Index";
@@ -10,14 +10,17 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Reason)
+                    @Html.DisplayNameFor(model => model.Title)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Result)
+                    @Html.DisplayNameFor(model => model.MaxChainLength)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Description)
+                    @Html.DisplayNameFor(model => model.Total)
                 </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sprint)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -25,13 +28,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Reason)
+                @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Result)
+                @Html.DisplayFor(modelItem => item.MaxChainLength)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sprint.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
