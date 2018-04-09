@@ -10,22 +10,22 @@ using AltAgileDiary.Models.AgileDiary;
 
 namespace AltAgileDiary.Controllers
 {
-    public class SprintsController : Controller
+    public class WeeksController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public SprintsController(ApplicationDbContext context)
+        public WeeksController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Sprints
+        // GET: Weeks
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Sprints.ToListAsync());
+            return View(await _context.Weeks.ToListAsync());
         }
 
-        // GET: Sprints/Details/5
+        // GET: Weeks/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -33,76 +33,63 @@ namespace AltAgileDiary.Controllers
                 return NotFound();
             }
 
-            var sprint = await _context.Sprints
+            var week = await _context.Weeks
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (sprint == null)
+            if (week == null)
             {
                 return NotFound();
             }
 
-            return View(sprint);
+            return View(week);
         }
 
-        // GET: Sprints/Create
+        // GET: Weeks/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Sprints/Create
+        // POST: Weeks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Conclusion,Thanks,Improvements,Reward,Start")] Sprint sprint)
+        public async Task<IActionResult> Create([Bind("Id,Conclusion,Thanks")] Week week)
         {
             if (ModelState.IsValid)
             {
-                sprint.Id = Guid.NewGuid();
-                sprint.End = sprint.Start + TimeSpan.FromDays(62);
-                _context.Add(sprint);
+                week.Id = Guid.NewGuid();
+                _context.Add(week);
                 await _context.SaveChangesAsync();
-                CreateWeeks(sprint.Id, sprint.Start, sprint.End);
-                return View(@"~/Views/Sprints/Edit.cshtml", sprint);
+                return RedirectToAction(nameof(Index));
             }
-            return View(sprint);
+            return View(week);
         }
 
-        private void CreateWeeks(Guid sprintId, DateTime startOfSprint, DateTime endOfSprint)
-        {
-            var currentStart = startOfSprint;
-            while (currentStart < endOfSprint)
-            {
-                _context.Add(new Week(sprintId, currentStart));
-                currentStart += TimeSpan.FromDays(7);
-                _context.SaveChangesAsync();
-            }            
-        }
-
-        // GET: Sprints/Edit/5
+        // GET: Weeks/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var sprint = await _context.Sprints.Include(m => m.Goals).Include(m => m.Habits)
-                .Include(m => m.Weeks).SingleOrDefaultAsync(m => m.Id == id);
-            if (sprint == null)
+
+            var week = await _context.Weeks.SingleOrDefaultAsync(m => m.Id == id);
+            if (week == null)
             {
                 return NotFound();
             }
-            return View(sprint);
+            return View(week);
         }
 
-        // POST: Sprints/Edit/5
+        // POST: Weeks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id,  Sprint sprint)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Conclusion,Thanks")] Week week)
         {
-            if (id != sprint.Id)
+            if (id != week.Id)
             {
                 return NotFound();
             }
@@ -111,13 +98,12 @@ namespace AltAgileDiary.Controllers
             {
                 try
                 {
-                    sprint.End = sprint.Start + TimeSpan.FromDays(62);
-                    _context.Update(sprint);
+                    _context.Update(week);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SprintExists(sprint.Id))
+                    if (!WeekExists(week.Id))
                     {
                         return NotFound();
                     }
@@ -128,10 +114,10 @@ namespace AltAgileDiary.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(sprint);
+            return View(week);
         }
 
-        // GET: Sprints/Delete/5
+        // GET: Weeks/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -139,30 +125,30 @@ namespace AltAgileDiary.Controllers
                 return NotFound();
             }
 
-            var sprint = await _context.Sprints
+            var week = await _context.Weeks
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (sprint == null)
+            if (week == null)
             {
                 return NotFound();
             }
 
-            return View(sprint);
+            return View(week);
         }
 
-        // POST: Sprints/Delete/5
+        // POST: Weeks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var sprint = await _context.Sprints.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Sprints.Remove(sprint);
+            var week = await _context.Weeks.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Weeks.Remove(week);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SprintExists(Guid id)
+        private bool WeekExists(Guid id)
         {
-            return _context.Sprints.Any(e => e.Id == id);
+            return _context.Weeks.Any(e => e.Id == id);
         }
     }
 }

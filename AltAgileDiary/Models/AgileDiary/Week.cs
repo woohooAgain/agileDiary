@@ -4,18 +4,24 @@ namespace AltAgileDiary.Models.AgileDiary
 {
     public class Week
     {
-        public Week(DateTime start)
+        public Week()
         {
-            Start = start;
-            End = Start + TimeSpan.FromDays(7);
+        }
+
+        public Week(Guid sprintId, DateTime startOfWeek)
+        {
+            Start = startOfWeek;
+            End = Start + TimeSpan.FromDays(6);
+            SprintId = sprintId;
         }
 
         public Guid Id { get; set; }
         public string Conclusion { get; set; }
         public string Thanks { get; set; }
-        public DateTime Start { get; }
-        public DateTime End { get; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
 
+        public Guid SprintId { get; set; }
         public Sprint Sprint { get; set; }
     }
 }

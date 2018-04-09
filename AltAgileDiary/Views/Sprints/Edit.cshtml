@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <form asp-action="Edit">
-            <div class="col-md-4">
+            <div class="col-md-3">
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="End" class="control-label"></label>
-                    <input asp-for="End" class="form-control" readonly/>
+                    <input asp-for="End" class="form-control" readonly />
                     <span asp-validation-for="End" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -50,7 +50,7 @@
                 </div>
 
             </div>
-            <div class="form-group col-md-4 col-md-offset-1">
+            <div class="form-group col-md-3">
                 <label asp-for="Goals" class="control-label"></label>
                 @if (Model != null)
                 {
@@ -68,7 +68,8 @@
                     </div>
                 }
             </div>
-            <div class="form-group col-md-3 col-md-offset-1">
+            @*col-md-offset-1*@
+            <div class="form-group col-md-3 ">
                 <label asp-for="Habits" class="control-label"></label>
                 @if (Model != null)
                 {
@@ -84,6 +85,25 @@
                     <div>
                         <a asp-controller="Habits" asp-action="Create" asp-route-id="@Model.Id">Add new habit</a>
                     </div>
+                }
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Weeks" class="control-label"></label>
+                @if (Model != null)
+                {
+                    if (Model.Weeks != null && Model.Weeks.Any())
+                    {
+                        var weekNumber = 1;
+                        <ul>
+                            @foreach (var week in Model.Weeks)
+                            {
+                                var weekName = $"{week.Start.ToShortDateString()} - {week.End.ToShortDateString()}";
+                                var weekLink = $"Week {weekNumber}. ";
+                                <li><a asp-controller="Weeks" asp-action="Edit" asp-route-id="@week.Id">@Html.DisplayFor(weekItem => weekLink)</a>@weekName</li>
+                                weekNumber++;
+                            }
+                        </ul>
+                    }
                 }
             </div>
         </form>
