@@ -63,6 +63,7 @@ namespace AltAgileDiary.Controllers
                 _context.Add(sprint);
                 await _context.SaveChangesAsync();
                 CreateWeeks(sprint.Id, sprint.Start, sprint.End);
+                CreateDays(sprint.Weeks.ToArray());
                 return View(@"~/Views/Sprints/Edit.cshtml", sprint);
             }
             return View(sprint);
@@ -75,8 +76,27 @@ namespace AltAgileDiary.Controllers
             {
                 _context.Add(new Week(sprintId, currentStart));
                 currentStart += TimeSpan.FromDays(7);
-                _context.SaveChangesAsync();
-            }            
+            }
+            _context.SaveChangesAsync();
+        }
+
+        private void CreateDays(Week[] weeks)
+        {
+            var length = weeks.Length;
+            for (var i = 0; i < length; i++)
+            {
+                var currentDate = weeks[i].Start;
+                while (currentDate <= weeks[i].End)
+                {
+                    _context.Add(new Day
+                    {
+                        Date = currentDate,
+                        WeekId = weeks[i].Id
+                    });
+                    currentDate += TimeSpan.FromDays(1);
+                }
+            }
+            _context.SaveChangesAsync();
         }
 
         // GET: Sprints/Edit/5
@@ -100,7 +120,7 @@ namespace AltAgileDiary.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id,  Sprint sprint)
+        public async Task<IActionResult> Edit(Guid id, Sprint sprint)
         {
             if (id != sprint.Id)
             {

@@ -75,8 +75,8 @@ namespace AltAgileDiary.Controllers
                 goal.Id = Guid.NewGuid();
                 _context.Add(goal);
                 await _context.SaveChangesAsync();
-                //return RedirectToAction(nameof(Index));
-                var sprint = await _context.Sprints.Include(m => m.Goals).SingleOrDefaultAsync(m => m.Id == goal.SprintId);
+                var sprint = await _context.Sprints.Include(m => m.Goals).Include(m => m.Habits)
+                    .Include(m => m.Weeks).SingleOrDefaultAsync(m => m.Id == goal.SprintId);
                 return View(@"~/Views/Sprints/Edit.cshtml", sprint);
             }
             return View(goal);
