@@ -88,7 +88,7 @@ namespace AltAgileDiary.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Conclusion,Thanks,Improvements,Reward,Start")] Sprint sprint)
+        public async Task<IActionResult> Edit(Guid id,  Sprint sprint)
         {
             if (id != sprint.Id)
             {
