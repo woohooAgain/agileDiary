@@ -29,6 +29,8 @@ namespace AltAgileDiary.Data
             builder.Entity<Sprint>().ToTable("Sprint");
         }
 
-        public DbSet<AltAgileDiary.Models.AgileDiary.Habit> Habit { get; set; }
+        public DbSet<Habit> Habit { get; set; }
+
+        public DbSet<Week> Weeks { get; set; }
     }
 }
