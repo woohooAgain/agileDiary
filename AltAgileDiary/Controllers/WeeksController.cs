@@ -74,7 +74,7 @@ namespace AltAgileDiary.Controllers
                 return NotFound();
             }
 
-            var week = await _context.Weeks.SingleOrDefaultAsync(m => m.Id == id);
+            var week = await _context.Weeks.Include(w => w.Days).SingleOrDefaultAsync(m => m.Id == id);
             if (week == null)
             {
                 return NotFound();

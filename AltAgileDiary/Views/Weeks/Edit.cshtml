@@ -26,7 +26,24 @@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
+            
         </form>
+    </div>
+    <div class="form-group col-md-3">
+        <label asp-for="Days" class="control-label"></label>
+        @if (Model != null)
+        {
+            if (Model.Days != null && Model.Days.Any())
+            {
+                <ul>
+                    @foreach (var day in Model.Days)
+                    {
+                        var dayFullName = $"{day.Date.DayOfWeek}, " + $"{day.Date.ToShortDateString()}";
+                        <li><a asp-controller="Days" asp-action="Edit" asp-route-id="@day.Id">@Html.DisplayFor(item => dayFullName)</a></li>
+                    }
+                </ul>
+            }
+        }
     </div>
 </div>
 

@@ -86,15 +86,16 @@ namespace AltAgileDiary.Controllers
             for (var i = 0; i < length; i++)
             {
                 var currentDate = weeks[i].Start;
+                var weekId = weeks[i].Id;
                 while (currentDate <= weeks[i].End)
                 {
                     _context.Add(new Day
                     {
                         Date = currentDate,
-                        WeekId = weeks[i].Id
+                        WeekId = weekId
                     });
                     currentDate += TimeSpan.FromDays(1);
-                }
+                }                
             }
             _context.SaveChangesAsync();
         }
