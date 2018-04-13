@@ -26,5 +26,7 @@ namespace AltAgileDiary.Models.AgileDiary
         public Sprint Sprint { get; set; }
 
         public ICollection<Day> Days { get; set; }
+
+        public ICollection<Task> Tasks { get; set; }
     }
 }

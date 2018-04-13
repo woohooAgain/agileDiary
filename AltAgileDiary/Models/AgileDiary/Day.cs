@@ -14,5 +14,7 @@ namespace AltAgileDiary.Models.AgileDiary
 
         public Guid WeekId { get; set; }
         public Week Week { get; set; }
+
+        public ICollection<Task> Tasks { get; set; }
     }
 }

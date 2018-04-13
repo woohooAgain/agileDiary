@@ -11,9 +11,10 @@ using System;
 namespace AltAgileDiary.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180413184804_AddTask")]
+    partial class AddTask
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -336,7 +337,7 @@ namespace AltAgileDiary.Data.Migrations
             modelBuilder.Entity("AltAgileDiary.Models.AgileDiary.Task", b =>
                 {
                     b.HasOne("AltAgileDiary.Models.AgileDiary.Day", "Day")
-                        .WithMany("Tasks")
+                        .WithMany()
                         .HasForeignKey("DayId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -345,7 +346,7 @@ namespace AltAgileDiary.Data.Migrations
                         .HasForeignKey("GoalId");
 
                     b.HasOne("AltAgileDiary.Models.AgileDiary.Week", "Week")
-                        .WithMany("Tasks")
+                        .WithMany()
                         .HasForeignKey("WeekId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

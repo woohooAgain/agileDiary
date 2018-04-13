@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using AltAgileDiary.Models;
 using AltAgileDiary.Models.AgileDiary;
@@ -32,5 +28,9 @@ namespace AltAgileDiary.Data
         public DbSet<Habit> Habit { get; set; }
 
         public DbSet<Week> Weeks { get; set; }
+
+        public DbSet<Day> Day { get; set; }
+
+        public DbSet<Models.AgileDiary.Task> Task { get; set; }
     }
 }
