@@ -1,0 +1,49 @@
+﻿@model AltAgileDiary.Models.AgileDiary.Day
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Day</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Achievements" class="control-label"></label>
+                <textarea asp-for="Achievements" class="form-control" ></textarea>
+                <span asp-validation-for="Achievements" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Thanks" class="control-label"></label>
+                <input asp-for="Thanks" class="form-control" />
+                <span asp-validation-for="Thanks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input value=@Model.Date.ToShortDateString() class="form-control" readonly/>
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeekId" class="control-label"></label>
+                <select asp-for="WeekId" class="form-control" asp-items="ViewBag.WeekId" readonly></select>
+                <span asp-validation-for="WeekId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
