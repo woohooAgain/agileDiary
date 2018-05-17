@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost:8090",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:53060/",
       "sslPort": 44332
@@ -23,6 +27,13 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://localhost:53061/"
+    },
+    "LocalIIS": {
+      "commandName": "IIS",
+      "workingDirectory": "F:\\Storage\\Git\\AgileDiary\\ad_1\\AltAgileDiary",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     }
   }
 }

@@ -126,7 +126,9 @@ namespace AltAgileDiary.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                var sprint = await _context.Sprints.Include(m => m.Goals).Include(m => m.Habits)
+                    .Include(m => m.Weeks).SingleOrDefaultAsync(m => m.Id == habit.SprintId);
+                return View(@"~/Views/Sprints/Edit.cshtml", sprint);
             }
             ViewData["SprintId"] = new SelectList(_context.Sprints, "Id", "Id", habit.SprintId);
             return View(habit);

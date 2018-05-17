@@ -95,9 +95,9 @@ namespace AltAgileDiary.Controllers
                         WeekId = weekId
                     });
                     currentDate += TimeSpan.FromDays(1);
-                }                
-            }
-            _context.SaveChangesAsync();
+                }
+                _context.SaveChangesAsync();
+            }            
         }
 
         // GET: Sprints/Edit/5

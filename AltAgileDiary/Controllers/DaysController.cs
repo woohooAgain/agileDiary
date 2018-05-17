@@ -92,7 +92,7 @@ namespace AltAgileDiary.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Achievements,Thanks,Date,WeekId")] Day day)
+        public async Task<IActionResult> Edit(Guid id, Day day)
         {
             if (id != day.Id)
             {
@@ -101,9 +101,12 @@ namespace AltAgileDiary.Controllers
 
             if (ModelState.IsValid)
             {
+                var oldDay = _context.Day.FirstOrDefault(d => d.Id == id);
                 try
                 {
-                    _context.Update(day);
+                    oldDay.Achievements = day.Achievements;
+                    oldDay.Thanks = day.Thanks;
+                    _context.Update(oldDay);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -117,7 +120,8 @@ namespace AltAgileDiary.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                var week = await _context.Weeks.Include(w => w.Days).SingleOrDefaultAsync(w => w.Id == day.WeekId);
+                return View(@"~/Views/Weeks/Edit.cshtml", week);
             }
             ViewData["WeekId"] = new SelectList(_context.Weeks, "Id", "Id", day.WeekId);
             return View(day);
