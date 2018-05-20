@@ -9,3 +9,4 @@ F:\Storage\Git\AgileDiary\ad_1\AltAgileDiary\obj\Debug\netcoreapp2.0\AltAgileDia
 F:\Storage\Git\AgileDiary\ad_1\AltAgileDiary\obj\Debug\netcoreapp2.0\AltAgileDiary.AssemblyInfo.cs
 F:\Storage\Git\AgileDiary\ad_1\AltAgileDiary\obj\Debug\netcoreapp2.0\AltAgileDiary.dll
 F:\Storage\Git\AgileDiary\ad_1\AltAgileDiary\obj\Debug\netcoreapp2.0\AltAgileDiary.pdb
+F:\Storage\Git\AgileDiary\ad_1\AltAgileDiary\obj\Debug\netcoreapp2.0\AltAgileDiary.csprojAssemblyReference.cache

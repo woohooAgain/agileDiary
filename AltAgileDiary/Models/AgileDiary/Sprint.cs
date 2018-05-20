@@ -17,6 +17,7 @@ namespace AltAgileDiary.Models.AgileDiary
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime End { get; set; }
+        public string OwnerId { get; set; }
 
         public ICollection<Goal> Goals { get; set; }
         public ICollection<Habit> Habits { get; set; }

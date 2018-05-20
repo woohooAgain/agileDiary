@@ -6,23 +6,30 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AltAgileDiary.Data;
+using AltAgileDiary.Models;
 using AltAgileDiary.Models.AgileDiary;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace AltAgileDiary.Controllers
 {
+    [Authorize]
     public class SprintsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public SprintsController(ApplicationDbContext context)
+        public SprintsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Sprints
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Sprints.ToListAsync());
+            var currentUser = await _userManager.GetUserAsync(User);
+            return View(await _context.Sprints.Where(s=>s.OwnerId == currentUser.Id.ToString()).ToListAsync());
         }
 
         // GET: Sprints/Details/5
@@ -58,8 +65,10 @@ namespace AltAgileDiary.Controllers
         {
             if (ModelState.IsValid)
             {
+                var currentUser = await _userManager.GetUserAsync(User);
                 sprint.Id = Guid.NewGuid();
                 sprint.End = sprint.Start + TimeSpan.FromDays(62);
+                sprint.OwnerId = currentUser.Id;
                 _context.Add(sprint);
                 await _context.SaveChangesAsync();
                 CreateWeeks(sprint.Id, sprint.Start, sprint.End);
@@ -132,7 +141,9 @@ namespace AltAgileDiary.Controllers
             {
                 try
                 {
+                    var currentUser = await _userManager.GetUserAsync(User);
                     sprint.End = sprint.Start + TimeSpan.FromDays(62);
+                    sprint.OwnerId = currentUser.Id;
                     _context.Update(sprint);
                     await _context.SaveChangesAsync();
                 }

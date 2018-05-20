@@ -36,6 +36,24 @@ namespace AltAgileDiary
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
+            services.AddAuthentication().AddFacebook(options =>
+            {
+                options.AppId = Configuration["Facebook:AppId"];
+                options.AppSecret = Configuration["Facebook:AppSecret"];
+            });
+
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId= Configuration["Google:ClientId"];
+                options.ClientSecret = Configuration["Google:ClientSecret"];
+            });
+
+            services.AddAuthentication().AddMicrosoftAccount(options =>
+            {
+                options.ClientId = Configuration["Microsoft:ClientId"];
+                options.ClientSecret = Configuration["Microsoft:ClientSecret"];
+            });
+
             services.AddMvc();
         }
 

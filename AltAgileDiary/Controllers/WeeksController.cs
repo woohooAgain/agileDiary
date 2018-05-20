@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AltAgileDiary.Data;
 using AltAgileDiary.Models.AgileDiary;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AltAgileDiary.Controllers
 {
+    [Authorize]
     public class WeeksController : Controller
     {
         private readonly ApplicationDbContext _context;
