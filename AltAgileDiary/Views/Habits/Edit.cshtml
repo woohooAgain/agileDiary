@@ -4,16 +4,13 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
-
-<h4>Habit</h4>
+<h2>Edit habit "@Model.Title"</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div class="form-group">
-                <label asp-for="SprintId" class="control-label"></label>
-                <input asp-for="SprintId" value=@Model.SprintId readonly class="form-control" />
+                <input asp-for="SprintId" value=@Model.SprintId readonly class="form-control" type="hidden"/>
                 <span asp-validation-for="SprintId" class="text-danger"></span>
             </div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -38,10 +35,6 @@
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

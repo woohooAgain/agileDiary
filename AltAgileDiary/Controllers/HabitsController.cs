@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -19,32 +18,6 @@ namespace AltAgileDiary.Controllers
         public HabitsController(ApplicationDbContext context)
         {
             _context = context;
-        }
-
-        // GET: Habits
-        public async Task<IActionResult> Index()
-        {
-            var applicationDbContext = _context.Habit.Include(h => h.Sprint);
-            return View(await applicationDbContext.ToListAsync());
-        }
-
-        // GET: Habits/Details/5
-        public async Task<IActionResult> Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var habit = await _context.Habit
-                .Include(h => h.Sprint)
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (habit == null)
-            {
-                return NotFound();
-            }
-
-            return View(habit);
         }
 
         // GET: Habits/Create
@@ -134,36 +107,6 @@ namespace AltAgileDiary.Controllers
             }
             ViewData["SprintId"] = new SelectList(_context.Sprints, "Id", "Id", habit.SprintId);
             return View(habit);
-        }
-
-        // GET: Habits/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var habit = await _context.Habit
-                .Include(h => h.Sprint)
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (habit == null)
-            {
-                return NotFound();
-            }
-
-            return View(habit);
-        }
-
-        // POST: Habits/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
-        {
-            var habit = await _context.Habit.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Habit.Remove(habit);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool HabitExists(Guid id)

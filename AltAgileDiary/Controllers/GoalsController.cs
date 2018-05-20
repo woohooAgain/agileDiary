@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AltAgileDiary.Data;
-using AltAgileDiary.Data.Migrations;
 using AltAgileDiary.Models.AgileDiary;
 using Microsoft.AspNetCore.Authorization;
 
@@ -20,30 +17,6 @@ namespace AltAgileDiary.Controllers
         public GoalsController(ApplicationDbContext context)
         {
             _context = context;
-        }
-
-        // GET: Goals
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Goal.ToListAsync());
-        }
-
-        // GET: Goals/Details/5
-        public async Task<IActionResult> Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var goal = await _context.Goal
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (goal == null)
-            {
-                return NotFound();
-            }
-
-            return View(goal);
         }
 
         // GET: Goals/Create
@@ -135,35 +108,6 @@ namespace AltAgileDiary.Controllers
                 return View(@"~/Views/Sprints/Edit.cshtml", sprint);
             }
             return View(goal);
-        }
-
-        // GET: Goals/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var goal = await _context.Goal
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (goal == null)
-            {
-                return NotFound();
-            }
-
-            return View(goal);
-        }
-
-        // POST: Goals/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
-        {
-            var goal = await _context.Goal.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Goal.Remove(goal);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool GoalExists(Guid id)

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -19,57 +18,6 @@ namespace AltAgileDiary.Controllers
         public DaysController(ApplicationDbContext context)
         {
             _context = context;
-        }
-
-        // GET: Days
-        public async Task<IActionResult> Index()
-        {
-            var applicationDbContext = _context.Day.Include(d => d.Week);
-            return View(await applicationDbContext.ToListAsync());
-        }
-
-        // GET: Days/Details/5
-        public async Task<IActionResult> Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var day = await _context.Day
-                .Include(d => d.Week)
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (day == null)
-            {
-                return NotFound();
-            }
-
-            return View(day);
-        }
-
-        // GET: Days/Create
-        public IActionResult Create()
-        {
-            ViewData["WeekId"] = new SelectList(_context.Weeks, "Id", "Id");
-            return View();
-        }
-
-        // POST: Days/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Achievements,Thanks,Date,WeekId")] Day day)
-        {
-            if (ModelState.IsValid)
-            {
-                day.Id = Guid.NewGuid();
-                _context.Add(day);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["WeekId"] = new SelectList(_context.Weeks, "Id", "Id", day.WeekId);
-            return View(day);
         }
 
         // GET: Days/Edit/5
@@ -122,41 +70,11 @@ namespace AltAgileDiary.Controllers
                         throw;
                     }
                 }
-                var week = await _context.Weeks.Include(w => w.Days).SingleOrDefaultAsync(w => w.Id == day.WeekId);
+                var week = await _context.Weeks.Include(w => w.Days).SingleOrDefaultAsync(w => w.Id == oldDay.WeekId);
                 return View(@"~/Views/Weeks/Edit.cshtml", week);
             }
             ViewData["WeekId"] = new SelectList(_context.Weeks, "Id", "Id", day.WeekId);
             return View(day);
-        }
-
-        // GET: Days/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var day = await _context.Day
-                .Include(d => d.Week)
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (day == null)
-            {
-                return NotFound();
-            }
-
-            return View(day);
-        }
-
-        // POST: Days/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
-        {
-            var day = await _context.Day.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Day.Remove(day);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool DayExists(Guid id)

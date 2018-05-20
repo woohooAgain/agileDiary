@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AltAgileDiary.Data;
 using AltAgileDiary.Models;
@@ -30,24 +28,6 @@ namespace AltAgileDiary.Controllers
         {
             var currentUser = await _userManager.GetUserAsync(User);
             return View(await _context.Sprints.Where(s=>s.OwnerId == currentUser.Id.ToString()).ToListAsync());
-        }
-
-        // GET: Sprints/Details/5
-        public async Task<IActionResult> Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var sprint = await _context.Sprints
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (sprint == null)
-            {
-                return NotFound();
-            }
-
-            return View(sprint);
         }
 
         // GET: Sprints/Create
@@ -141,10 +121,12 @@ namespace AltAgileDiary.Controllers
             {
                 try
                 {
-                    var currentUser = await _userManager.GetUserAsync(User);
-                    sprint.End = sprint.Start + TimeSpan.FromDays(62);
-                    sprint.OwnerId = currentUser.Id;
-                    _context.Update(sprint);
+                    var oldSprint = await _context.Sprints.FirstOrDefaultAsync(s => s.Id == sprint.Id);
+                    oldSprint.Conclusion = sprint.Conclusion;
+                    oldSprint.Improvements = sprint.Improvements;
+                    oldSprint.Thanks = sprint.Thanks;
+                    oldSprint.Reward = sprint.Reward;
+                    _context.Update(oldSprint);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
