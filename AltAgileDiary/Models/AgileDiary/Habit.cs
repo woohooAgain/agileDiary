@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AltAgileDiary.Models.AgileDiary
 {
@@ -11,5 +12,7 @@ namespace AltAgileDiary.Models.AgileDiary
 
         public Guid SprintId { get; set; }
         public Sprint Sprint { get; set; }
+
+        public ICollection<DailyHabitResult> HabitResults { get; set; }
     }
 }

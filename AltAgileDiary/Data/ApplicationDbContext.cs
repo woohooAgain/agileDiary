@@ -31,6 +31,8 @@ namespace AltAgileDiary.Data
 
         public DbSet<Day> Day { get; set; }
 
+        public DbSet<DailyHabitResult> DailyHabitResult { get; set; }
+
         public DbSet<Models.AgileDiary.Task> Task { get; set; }
     }
 }

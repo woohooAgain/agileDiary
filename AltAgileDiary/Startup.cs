@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AltAgileDiary.Data;
+using AltAgileDiary.Interfaces;
 using AltAgileDiary.Models;
+using AltAgileDiary.Models.AgileDiary;
 using AltAgileDiary.Services;
 
 namespace AltAgileDiary
@@ -51,6 +53,8 @@ namespace AltAgileDiary
             });
 
             services.AddMvc();
+
+            services.AddScoped<IBaseEntityService<Day>, DayService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -46,12 +46,31 @@ namespace AltAgileDiary.Controllers
             {
                 habit.Id = Guid.NewGuid();
                 _context.Add(habit);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();                
                 var sprint = await _context.Sprints.Include(m => m.Goals).Include(m => m.Habits)
                     .Include(m => m.Weeks).SingleOrDefaultAsync(m => m.Id == habit.SprintId);
+                CreateDailyResults(habit.Id, sprint.Start);
                 return View(@"~/Views/Sprints/Edit.cshtml", sprint);
             }
             return View(habit);
+        }
+
+        private void CreateDailyResults(Guid habitId, DateTime startDate)
+        {
+            const int daysQuantity = 63;
+            var date = startDate;
+            for (var i = 0; i < daysQuantity; i++)
+            {
+                var currentDayId = _context.Day.FirstOrDefault(d => d.Date == date).Id;
+                _context.Add(new DailyHabitResult
+                {
+                    Done = false,
+                    HabitId = habitId,
+                    DayId = currentDayId
+                });
+                date = date.AddDays(1);
+            }
+            _context.SaveChangesAsync();
         }
 
         // GET: Habits/Edit/5
