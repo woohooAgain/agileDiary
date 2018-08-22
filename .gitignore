@@ -1,10 +1,6 @@
-AgileDiaryDb/AgileDiaryDb.dbmdl
-AgileDiaryDb/AgileDiaryDb.jfm
-AgileDiary/obj/**
-AgileDiary/bin/**
-AgileDiary/.vs/**
-AgileDiaryDb/obj/**
-AgileDiaryDb/bin/**
+AgileDiary/AgileDiary/obj/**
+AgileDiary/AgileDiary/bin/**
+AgileDiary/AgileDiary/.vs/**
 AgileDiary/.vs/AgileDiary/v15/Server/sqlite3/storage.ide-wal
 AgileDiary/.vs/AgileDiary/v15/Server/sqlite3/storage.ide
 AgileDiary/.vs/AgileDiary/v15/Server/sqlite3/db.lock
