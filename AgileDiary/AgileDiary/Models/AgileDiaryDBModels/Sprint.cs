@@ -14,10 +14,11 @@ namespace AgileDiary.Models.AgileDiaryDBModels
         public Guid Id { get; set; }
         [Required]
         public DateTime StartDate { get; set; }
+        public string Reward { get; set; }
 
         public virtual ICollection<Week> Weeks { get; set; }
         public virtual ICollection<Goal> Goals { get; set; }
-        public virtual Result Result { get; set; }
+        public virtual Result SprintResult { get; set; }
         public virtual ICollection<Habit> Habits { get; set; }
     }
 }

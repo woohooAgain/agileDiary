@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace AgileDiary.Models.AgileDiaryDBModels
 {
-    public class Goal
+    public class HabitResult
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
-        public string Area { get; set; }
-        public string Description { get; set; }
-        public string Reason { get; set; }
+        public bool Done { get; set; }
 
-        public virtual ICollection<Milestone> Milestones { get; set; }
-        public virtual Sprint Sprint { get; set; }
+        public virtual Habit Habit { get; set; }
+        public virtual Day Day { get; set; }
     }
 }
