@@ -14,9 +14,5 @@ namespace AgileDiary.Models.AgileDiaryDBModels
         public string Gratitude { get; set; }
         public string Lesson { get; set; }
         public string Improvement { get; set; }
-
-        public virtual Sprint Sprint { get; set; }
-        public virtual Week Week { get; set; }
-        public virtual Day Day { get; set; }
     }
 }
