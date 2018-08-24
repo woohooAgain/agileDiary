@@ -14,14 +14,14 @@ namespace AgileDiary.Data
         {
         }
 
-        public DbSet<Day> Days { get; set; }
-        public DbSet<Goal> Goals { get; set; }
-        public DbSet<Habit> Habits { get; set; }
-        public DbSet<HabitResult> HabitResults { get; set; }
-        public DbSet<Milestone> Milestones { get; set; }
-        public DbSet<Result> Results { get; set; }
-        public DbSet<SimpleTask> SimpleTasks { get; set; }
-        public DbSet<Sprint> Sprints { get; set; }
-        public DbSet<Week> Weeks { get; set; }
+        public DbSet<DayDbModel> Days { get; set; }
+        public DbSet<GoalDbModel> Goals { get; set; }
+        public DbSet<HabitDbModel> Habits { get; set; }
+        public DbSet<HabitResultDbModel> HabitResults { get; set; }
+        public DbSet<MilestoneDbModel> Milestones { get; set; }
+        public DbSet<ResultDbModel> Results { get; set; }
+        public DbSet<SimpleTaskDbModel> SimpleTasks { get; set; }
+        public DbSet<SprintDbModel> Sprints { get; set; }
+        public DbSet<WeekDbModel> Weeks { get; set; }
     }
 }

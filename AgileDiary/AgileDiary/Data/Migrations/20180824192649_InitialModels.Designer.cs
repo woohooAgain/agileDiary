@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgileDiary.Data.Migrations
 {
     [DbContext(typeof(AgileDiaryDbContext))]
-    [Migration("20180823211621_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20180824192649_InitialModels")]
+    partial class InitialModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,27 +21,27 @@ namespace AgileDiary.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.Day", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.DayDbModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<Guid?>("DayResultId");
+                    b.Property<Guid?>("DayResultDbModelId");
 
-                    b.Property<Guid?>("WeekId");
+                    b.Property<Guid?>("WeekDbModelId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DayResultId");
+                    b.HasIndex("DayResultDbModelId");
 
-                    b.HasIndex("WeekId");
+                    b.HasIndex("WeekDbModelId");
 
                     b.ToTable("Days");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.Goal", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.GoalDbModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -52,72 +52,72 @@ namespace AgileDiary.Data.Migrations
 
                     b.Property<string>("Reason");
 
-                    b.Property<Guid?>("SprintId");
+                    b.Property<Guid?>("SprintDbModelId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SprintId");
+                    b.HasIndex("SprintDbModelId");
 
                     b.ToTable("Goals");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.Habit", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.HabitDbModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid?>("SprintId");
+                    b.Property<Guid?>("SprintDbModelId");
 
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SprintId");
+                    b.HasIndex("SprintDbModelId");
 
                     b.ToTable("Habits");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.HabitResult", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.HabitResultDbModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid?>("DayId");
+                    b.Property<Guid?>("DayDbModelId");
 
                     b.Property<bool>("Done");
 
-                    b.Property<Guid?>("HabitId");
+                    b.Property<Guid?>("HabitDbModelId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DayId");
+                    b.HasIndex("DayDbModelId");
 
-                    b.HasIndex("HabitId");
+                    b.HasIndex("HabitDbModelId");
 
                     b.ToTable("HabitResults");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.Milestone", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.MilestoneDbModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid?>("GoalId");
+                    b.Property<Guid?>("GoalDbModelId");
 
                     b.Property<string>("Title");
 
-                    b.Property<Guid?>("WeekId");
+                    b.Property<Guid?>("WeekDbModelId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GoalId");
+                    b.HasIndex("GoalDbModelId");
 
-                    b.HasIndex("WeekId");
+                    b.HasIndex("WeekDbModelId");
 
                     b.ToTable("Milestones");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.Result", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.ResultDbModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -135,69 +135,69 @@ namespace AgileDiary.Data.Migrations
                     b.ToTable("Results");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.SimpleTask", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.SimpleTaskDbModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Comment");
 
-                    b.Property<Guid?>("DayId");
+                    b.Property<Guid?>("DayDbModelId");
 
                     b.Property<bool>("Finished");
 
-                    b.Property<Guid?>("GoalId");
+                    b.Property<Guid?>("GoalDbModelId");
 
                     b.Property<string>("Title")
                         .IsRequired();
 
-                    b.Property<Guid?>("WeekId");
+                    b.Property<Guid?>("WeekDbModelId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DayId");
+                    b.HasIndex("DayDbModelId");
 
-                    b.HasIndex("GoalId");
+                    b.HasIndex("GoalDbModelId");
 
-                    b.HasIndex("WeekId");
+                    b.HasIndex("WeekDbModelId");
 
                     b.ToTable("SimpleTasks");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.Sprint", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.SprintDbModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Reward");
 
-                    b.Property<Guid?>("SprintResultId");
+                    b.Property<Guid?>("SprintResultDbModelId");
 
                     b.Property<DateTime>("StartDate");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SprintResultId");
+                    b.HasIndex("SprintResultDbModelId");
 
                     b.ToTable("Sprints");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.Week", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.WeekDbModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid?>("SprintId");
+                    b.Property<Guid?>("SprintDbModelId");
 
                     b.Property<DateTime>("StartDate");
 
-                    b.Property<Guid?>("WeekResultId");
+                    b.Property<Guid?>("WeekResultDbModelId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SprintId");
+                    b.HasIndex("SprintDbModelId");
 
-                    b.HasIndex("WeekResultId");
+                    b.HasIndex("WeekResultDbModelId");
 
                     b.ToTable("Weeks");
                 });
@@ -367,84 +367,84 @@ namespace AgileDiary.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.Day", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.DayDbModel", b =>
                 {
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Result", "DayResult")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.ResultDbModel", "DayResultDbModel")
                         .WithMany()
-                        .HasForeignKey("DayResultId");
+                        .HasForeignKey("DayResultDbModelId");
 
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Week", "Week")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.WeekDbModel", "WeekDbModel")
                         .WithMany("Days")
-                        .HasForeignKey("WeekId");
+                        .HasForeignKey("WeekDbModelId");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.Goal", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.GoalDbModel", b =>
                 {
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Sprint", "Sprint")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.SprintDbModel", "SprintDbModel")
                         .WithMany("Goals")
-                        .HasForeignKey("SprintId");
+                        .HasForeignKey("SprintDbModelId");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.Habit", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.HabitDbModel", b =>
                 {
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Sprint", "Sprint")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.SprintDbModel", "SprintDbModel")
                         .WithMany("Habits")
-                        .HasForeignKey("SprintId");
+                        .HasForeignKey("SprintDbModelId");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.HabitResult", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.HabitResultDbModel", b =>
                 {
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Day", "Day")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.DayDbModel", "DayDbModel")
                         .WithMany("HabitResults")
-                        .HasForeignKey("DayId");
+                        .HasForeignKey("DayDbModelId");
 
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Habit", "Habit")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.HabitDbModel", "HabitDbModel")
                         .WithMany("HabitResults")
-                        .HasForeignKey("HabitId");
+                        .HasForeignKey("HabitDbModelId");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.Milestone", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.MilestoneDbModel", b =>
                 {
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Goal")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.GoalDbModel")
                         .WithMany("Milestones")
-                        .HasForeignKey("GoalId");
+                        .HasForeignKey("GoalDbModelId");
 
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Week", "Week")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.WeekDbModel", "WeekDbModel")
                         .WithMany()
-                        .HasForeignKey("WeekId");
+                        .HasForeignKey("WeekDbModelId");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.SimpleTask", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.SimpleTaskDbModel", b =>
                 {
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Day", "Day")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.DayDbModel", "DayDbModel")
                         .WithMany("Tasks")
-                        .HasForeignKey("DayId");
+                        .HasForeignKey("DayDbModelId");
 
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Goal", "Goal")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.GoalDbModel", "GoalDbModel")
                         .WithMany()
-                        .HasForeignKey("GoalId");
+                        .HasForeignKey("GoalDbModelId");
 
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Week", "Week")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.WeekDbModel", "WeekDbModel")
                         .WithMany("Tasks")
-                        .HasForeignKey("WeekId");
+                        .HasForeignKey("WeekDbModelId");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.Sprint", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.SprintDbModel", b =>
                 {
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Result", "SprintResult")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.ResultDbModel", "SprintResultDbModel")
                         .WithMany()
-                        .HasForeignKey("SprintResultId");
+                        .HasForeignKey("SprintResultDbModelId");
                 });
 
-            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.Week", b =>
+            modelBuilder.Entity("AgileDiary.Models.AgileDiaryDBModels.WeekDbModel", b =>
                 {
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Sprint", "Sprint")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.SprintDbModel", "SprintDbModel")
                         .WithMany("Weeks")
-                        .HasForeignKey("SprintId");
+                        .HasForeignKey("SprintDbModelId");
 
-                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.Result", "WeekResult")
+                    b.HasOne("AgileDiary.Models.AgileDiaryDBModels.ResultDbModel", "WeekResultDbModel")
                         .WithMany()
-                        .HasForeignKey("WeekResultId");
+                        .HasForeignKey("WeekResultDbModelId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

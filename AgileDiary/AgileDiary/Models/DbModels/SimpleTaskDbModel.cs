@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AgileDiary.Models.AgileDiaryDBModels
 {
-    public class SimpleTask
+    public class SimpleTaskDbModel
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
@@ -16,8 +13,8 @@ namespace AgileDiary.Models.AgileDiaryDBModels
         public string Comment { get; set; }
         public bool Finished { get; set; }
 
-        public virtual Day Day { get; set; }
-        public virtual Week Week { get; set; }
-        public virtual Goal Goal { get; set; }
+        public virtual DayDbModel DayDbModel { get; set; }
+        public virtual WeekDbModel WeekDbModel { get; set; }
+        public virtual GoalDbModel GoalDbModel { get; set; }
     }
 }

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AgileDiary.Models.AgileDiaryDBModels
 {
-    public class Goal
+    public class GoalDbModel
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
@@ -14,7 +12,7 @@ namespace AgileDiary.Models.AgileDiaryDBModels
         public string Description { get; set; }
         public string Reason { get; set; }
 
-        public virtual ICollection<Milestone> Milestones { get; set; }
-        public virtual Sprint Sprint { get; set; }
+        public virtual ICollection<MilestoneDbModel> Milestones { get; set; }
+        public virtual SprintDbModel SprintDbModel { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AgileDiary.Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,14 +29,14 @@ namespace AgileDiary.Data.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     StartDate = table.Column<DateTime>(nullable: false),
                     Reward = table.Column<string>(nullable: true),
-                    SprintResultId = table.Column<Guid>(nullable: true)
+                    SprintResultDbModelId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sprints", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Sprints_Results_SprintResultId",
-                        column: x => x.SprintResultId,
+                        name: "FK_Sprints_Results_SprintResultDbModelId",
+                        column: x => x.SprintResultDbModelId,
                         principalTable: "Results",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -50,14 +50,14 @@ namespace AgileDiary.Data.Migrations
                     Area = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Reason = table.Column<string>(nullable: true),
-                    SprintId = table.Column<Guid>(nullable: true)
+                    SprintDbModelId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Goals", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Goals_Sprints_SprintId",
-                        column: x => x.SprintId,
+                        name: "FK_Goals_Sprints_SprintDbModelId",
+                        column: x => x.SprintDbModelId,
                         principalTable: "Sprints",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -69,14 +69,14 @@ namespace AgileDiary.Data.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Title = table.Column<string>(nullable: true),
-                    SprintId = table.Column<Guid>(nullable: true)
+                    SprintDbModelId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Habits", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Habits_Sprints_SprintId",
-                        column: x => x.SprintId,
+                        name: "FK_Habits_Sprints_SprintDbModelId",
+                        column: x => x.SprintDbModelId,
                         principalTable: "Sprints",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -88,21 +88,21 @@ namespace AgileDiary.Data.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     StartDate = table.Column<DateTime>(nullable: false),
-                    WeekResultId = table.Column<Guid>(nullable: true),
-                    SprintId = table.Column<Guid>(nullable: true)
+                    WeekResultDbModelId = table.Column<Guid>(nullable: true),
+                    SprintDbModelId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Weeks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Weeks_Sprints_SprintId",
-                        column: x => x.SprintId,
+                        name: "FK_Weeks_Sprints_SprintDbModelId",
+                        column: x => x.SprintDbModelId,
                         principalTable: "Sprints",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Weeks_Results_WeekResultId",
-                        column: x => x.WeekResultId,
+                        name: "FK_Weeks_Results_WeekResultDbModelId",
+                        column: x => x.WeekResultDbModelId,
                         principalTable: "Results",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -114,21 +114,21 @@ namespace AgileDiary.Data.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
-                    WeekId = table.Column<Guid>(nullable: true),
-                    DayResultId = table.Column<Guid>(nullable: true)
+                    WeekDbModelId = table.Column<Guid>(nullable: true),
+                    DayResultDbModelId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Days", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Days_Results_DayResultId",
-                        column: x => x.DayResultId,
+                        name: "FK_Days_Results_DayResultDbModelId",
+                        column: x => x.DayResultDbModelId,
                         principalTable: "Results",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Days_Weeks_WeekId",
-                        column: x => x.WeekId,
+                        name: "FK_Days_Weeks_WeekDbModelId",
+                        column: x => x.WeekDbModelId,
                         principalTable: "Weeks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -140,21 +140,21 @@ namespace AgileDiary.Data.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Title = table.Column<string>(nullable: true),
-                    WeekId = table.Column<Guid>(nullable: true),
-                    GoalId = table.Column<Guid>(nullable: true)
+                    WeekDbModelId = table.Column<Guid>(nullable: true),
+                    GoalDbModelId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Milestones", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Milestones_Goals_GoalId",
-                        column: x => x.GoalId,
+                        name: "FK_Milestones_Goals_GoalDbModelId",
+                        column: x => x.GoalDbModelId,
                         principalTable: "Goals",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Milestones_Weeks_WeekId",
-                        column: x => x.WeekId,
+                        name: "FK_Milestones_Weeks_WeekDbModelId",
+                        column: x => x.WeekDbModelId,
                         principalTable: "Weeks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -166,21 +166,21 @@ namespace AgileDiary.Data.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Done = table.Column<bool>(nullable: false),
-                    HabitId = table.Column<Guid>(nullable: true),
-                    DayId = table.Column<Guid>(nullable: true)
+                    HabitDbModelId = table.Column<Guid>(nullable: true),
+                    DayDbModelId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_HabitResults", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HabitResults_Days_DayId",
-                        column: x => x.DayId,
+                        name: "FK_HabitResults_Days_DayDbModelId",
+                        column: x => x.DayDbModelId,
                         principalTable: "Days",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_HabitResults_Habits_HabitId",
-                        column: x => x.HabitId,
+                        name: "FK_HabitResults_Habits_HabitDbModelId",
+                        column: x => x.HabitDbModelId,
                         principalTable: "Habits",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -194,102 +194,102 @@ namespace AgileDiary.Data.Migrations
                     Title = table.Column<string>(nullable: false),
                     Comment = table.Column<string>(nullable: true),
                     Finished = table.Column<bool>(nullable: false),
-                    DayId = table.Column<Guid>(nullable: true),
-                    WeekId = table.Column<Guid>(nullable: true),
-                    GoalId = table.Column<Guid>(nullable: true)
+                    DayDbModelId = table.Column<Guid>(nullable: true),
+                    WeekDbModelId = table.Column<Guid>(nullable: true),
+                    GoalDbModelId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SimpleTasks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SimpleTasks_Days_DayId",
-                        column: x => x.DayId,
+                        name: "FK_SimpleTasks_Days_DayDbModelId",
+                        column: x => x.DayDbModelId,
                         principalTable: "Days",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_SimpleTasks_Goals_GoalId",
-                        column: x => x.GoalId,
+                        name: "FK_SimpleTasks_Goals_GoalDbModelId",
+                        column: x => x.GoalDbModelId,
                         principalTable: "Goals",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_SimpleTasks_Weeks_WeekId",
-                        column: x => x.WeekId,
+                        name: "FK_SimpleTasks_Weeks_WeekDbModelId",
+                        column: x => x.WeekDbModelId,
                         principalTable: "Weeks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Days_DayResultId",
+                name: "IX_Days_DayResultDbModelId",
                 table: "Days",
-                column: "DayResultId");
+                column: "DayResultDbModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Days_WeekId",
+                name: "IX_Days_WeekDbModelId",
                 table: "Days",
-                column: "WeekId");
+                column: "WeekDbModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Goals_SprintId",
+                name: "IX_Goals_SprintDbModelId",
                 table: "Goals",
-                column: "SprintId");
+                column: "SprintDbModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HabitResults_DayId",
+                name: "IX_HabitResults_DayDbModelId",
                 table: "HabitResults",
-                column: "DayId");
+                column: "DayDbModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HabitResults_HabitId",
+                name: "IX_HabitResults_HabitDbModelId",
                 table: "HabitResults",
-                column: "HabitId");
+                column: "HabitDbModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Habits_SprintId",
+                name: "IX_Habits_SprintDbModelId",
                 table: "Habits",
-                column: "SprintId");
+                column: "SprintDbModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Milestones_GoalId",
+                name: "IX_Milestones_GoalDbModelId",
                 table: "Milestones",
-                column: "GoalId");
+                column: "GoalDbModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Milestones_WeekId",
+                name: "IX_Milestones_WeekDbModelId",
                 table: "Milestones",
-                column: "WeekId");
+                column: "WeekDbModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SimpleTasks_DayId",
+                name: "IX_SimpleTasks_DayDbModelId",
                 table: "SimpleTasks",
-                column: "DayId");
+                column: "DayDbModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SimpleTasks_GoalId",
+                name: "IX_SimpleTasks_GoalDbModelId",
                 table: "SimpleTasks",
-                column: "GoalId");
+                column: "GoalDbModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SimpleTasks_WeekId",
+                name: "IX_SimpleTasks_WeekDbModelId",
                 table: "SimpleTasks",
-                column: "WeekId");
+                column: "WeekDbModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sprints_SprintResultId",
+                name: "IX_Sprints_SprintResultDbModelId",
                 table: "Sprints",
-                column: "SprintResultId");
+                column: "SprintResultDbModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Weeks_SprintId",
+                name: "IX_Weeks_SprintDbModelId",
                 table: "Weeks",
-                column: "SprintId");
+                column: "SprintDbModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Weeks_WeekResultId",
+                name: "IX_Weeks_WeekResultDbModelId",
                 table: "Weeks",
-                column: "WeekResultId");
+                column: "WeekResultDbModelId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

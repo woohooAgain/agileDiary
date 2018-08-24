@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AgileDiary.Models.AgileDiaryDBModels
 {
-    public class HabitResult
+    public class HabitResultDbModel
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public bool Done { get; set; }
 
-        public virtual Habit Habit { get; set; }
-        public virtual Day Day { get; set; }
+        public virtual HabitDbModel HabitDbModel { get; set; }
+        public virtual DayDbModel DayDbModel { get; set; }
     }
 }
