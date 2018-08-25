@@ -4,6 +4,7 @@ using System.Text;
 using AgileDiary.Models.AgileDiaryDBModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using AgileDiary.Models.ViewModels;
 
 namespace AgileDiary.Data
 {
@@ -23,5 +24,6 @@ namespace AgileDiary.Data
         public DbSet<SimpleTaskDbModel> SimpleTasks { get; set; }
         public DbSet<SprintDbModel> Sprints { get; set; }
         public DbSet<WeekDbModel> Weeks { get; set; }
+        public DbSet<AgileDiary.Models.ViewModels.SprintViewModel> SprintViewModel { get; set; }
     }
 }

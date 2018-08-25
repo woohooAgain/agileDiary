@@ -12,8 +12,11 @@ using Microsoft.EntityFrameworkCore;
 using AgileDiary.Data;
 using AgileDiary.Interfaces;
 using AgileDiary.Managers;
+using AgileDiary.Models.AgileDiaryDBModels;
+using AgileDiary.Models.ViewModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
 
 namespace AgileDiary
 {
@@ -73,7 +76,15 @@ namespace AgileDiary
 
             app.UseAuthentication();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            Mapper.Initialize(cfg => cfg.CreateMap<SprintDbModel, SprintViewModel>());
+            Mapper.Initialize(cfg => cfg.CreateMap<SprintViewModel, SprintDbModel>());
         }
     }
 }
