@@ -4,6 +4,7 @@ using System.Linq;
 using AgileDiary.Data;
 using AgileDiary.Interfaces;
 using AgileDiary.Models.AgileDiaryDBModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgileDiary.Managers
 {
@@ -29,7 +30,12 @@ namespace AgileDiary.Managers
 
         public SprintDbModel Get(Guid id)
         {
-            return _context.Sprints.Find(id);
+            return _context.Sprints.Where(s => s.Id.Equals(id))
+                .Include(s => s.Weeks)
+                .Include(s => s.Goals)
+                .Include(s => s.Habits)
+                    .ThenInclude(h => h.HabitResults)
+                .FirstOrDefault();
         }
 
         public ICollection<SprintDbModel> List()
