@@ -83,8 +83,7 @@ namespace AgileDiary
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            Mapper.Initialize(cfg => cfg.CreateMap<SprintDbModel, SprintViewModel>());
-            Mapper.Initialize(cfg => cfg.CreateMap<SprintViewModel, SprintDbModel>());
+            Mapper.Initialize(cfg => cfg.CreateMap<SprintDbModel, SprintViewModel>().ReverseMap());
         }
     }
 }

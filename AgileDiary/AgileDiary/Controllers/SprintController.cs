@@ -24,7 +24,9 @@ namespace AgileDiary.Controllers
         // GET: Sprint
         public IActionResult Index()
         {
-            return View("Views/Sprint/Index.cshtml",_context.SprintViewModel.ToListAsync());
+            var model = _context.Sprints.ToList();
+            var viewModel = model.Select(Mapper.Map<SprintViewModel>);
+            return View("Views/Sprint/Index.cshtml", viewModel);
         }
 
         // GET: Sprint/Details/5
@@ -60,7 +62,6 @@ namespace AgileDiary.Controllers
         {
             if (ModelState.IsValid)
             {
-                sprintViewModel.Id = Guid.NewGuid();
                 var dbModel = Mapper.Map<SprintDbModel>(sprintViewModel);
                 _context.Add(dbModel);
                 await _context.SaveChangesAsync();
