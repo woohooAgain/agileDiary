@@ -13,6 +13,6 @@ namespace AgileDiary.Models.AgileDiaryDBModels
         public string Reason { get; set; }
 
         public virtual ICollection<MilestoneDbModel> Milestones { get; set; }
-        public virtual SprintDbModel SprintDbModel { get; set; }
+        public virtual SprintDbModel Sprint { get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace AgileDiary.Controllers
                 return NotFound();
             }
 
-            var model = await _context.SprintViewModel
+            var model = await _context.Sprints
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (model == null)
             {
@@ -144,15 +144,15 @@ namespace AgileDiary.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var sprintViewModel = await _context.SprintViewModel.FindAsync(id);
-            _context.SprintViewModel.Remove(sprintViewModel);
+            var sprintViewModel = await _context.Sprints.FindAsync(id);
+            _context.Sprints.Remove(sprintViewModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool SprintViewModelExists(Guid id)
         {
-            return _context.SprintViewModel.Any(e => e.Id == id);
+            return _context.Sprints.Any(e => e.Id == id);
         }
     }
 }

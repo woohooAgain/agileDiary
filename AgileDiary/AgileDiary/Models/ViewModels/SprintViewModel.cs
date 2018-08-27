@@ -7,6 +7,9 @@ namespace AgileDiary.Models.ViewModels
     {
         public Guid Id { get; set; }
         public DateTime StartDate { get; set; }
+
+        public DateTime EndDate => StartDate.AddDays(63);
+
         public string Reward { get; set; }
 
         public virtual ICollection<WeekViewModel> Weeks { get; set; }

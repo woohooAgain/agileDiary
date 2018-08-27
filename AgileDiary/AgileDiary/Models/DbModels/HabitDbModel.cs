@@ -11,6 +11,6 @@ namespace AgileDiary.Models.AgileDiaryDBModels
         public string Title { get; set; }
 
         public virtual ICollection<HabitResultDbModel> HabitResults { get; set; }
-        public virtual SprintDbModel SprintDbModel { get; set; }
+        public virtual SprintDbModel Sprint { get; set; }
     }
 }

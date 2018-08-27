@@ -12,7 +12,7 @@ namespace AgileDiary.Models.AgileDiaryDBModels
 
         public virtual ICollection<DayDbModel> Days { get; set; }
         public virtual ICollection<SimpleTaskDbModel> Tasks { get; set; }
-        public virtual ResultDbModel WeekResultDbModel { get; set; }
-        public virtual SprintDbModel SprintDbModel { get; set; }
+        public virtual ResultDbModel WeekResult { get; set; }
+        public virtual SprintDbModel Sprint { get; set; }
     }
 }

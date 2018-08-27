@@ -24,6 +24,5 @@ namespace AgileDiary.Data
         public DbSet<SimpleTaskDbModel> SimpleTasks { get; set; }
         public DbSet<SprintDbModel> Sprints { get; set; }
         public DbSet<WeekDbModel> Weeks { get; set; }
-        public DbSet<AgileDiary.Models.ViewModels.SprintViewModel> SprintViewModel { get; set; }
     }
 }

@@ -9,6 +9,6 @@ namespace AgileDiary.Models.AgileDiaryDBModels
         public Guid Id { get; set; }
         public string Title { get; set; }
 
-        public virtual WeekDbModel WeekDbModel { get; set; }
+        public virtual WeekDbModel Week { get; set; }
     }
 }

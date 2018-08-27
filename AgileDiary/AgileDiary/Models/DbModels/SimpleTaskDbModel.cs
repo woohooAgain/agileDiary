@@ -13,8 +13,8 @@ namespace AgileDiary.Models.AgileDiaryDBModels
         public string Comment { get; set; }
         public bool Finished { get; set; }
 
-        public virtual DayDbModel DayDbModel { get; set; }
-        public virtual WeekDbModel WeekDbModel { get; set; }
-        public virtual GoalDbModel GoalDbModel { get; set; }
+        public virtual DayDbModel Day { get; set; }
+        public virtual WeekDbModel Week { get; set; }
+        public virtual GoalDbModel Goal { get; set; }
     }
 }

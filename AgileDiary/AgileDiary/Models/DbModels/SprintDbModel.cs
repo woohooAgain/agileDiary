@@ -15,7 +15,7 @@ namespace AgileDiary.Models.AgileDiaryDBModels
 
         public virtual ICollection<WeekDbModel> Weeks { get; set; }
         public virtual ICollection<GoalDbModel> Goals { get; set; }
-        public virtual ResultDbModel SprintResultDbModel { get; set; }
+        public virtual ResultDbModel SprintResult { get; set; }
         public virtual ICollection<HabitDbModel> Habits { get; set; }
     }
 }

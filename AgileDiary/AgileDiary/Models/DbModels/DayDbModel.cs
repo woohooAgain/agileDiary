@@ -11,8 +11,8 @@ namespace AgileDiary.Models.AgileDiaryDBModels
         public DateTime Date { get; set; }
 
         public virtual ICollection<SimpleTaskDbModel> Tasks { get; set; }
-        public virtual WeekDbModel WeekDbModel { get; set; }
-        public virtual ResultDbModel DayResultDbModel { get; set; }
+        public virtual WeekDbModel Week { get; set; }
+        public virtual ResultDbModel DayResult { get; set; }
         public virtual ICollection<HabitResultDbModel> HabitResults { get; set; }
     }
 }
