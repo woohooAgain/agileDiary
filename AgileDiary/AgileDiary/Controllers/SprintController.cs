@@ -9,9 +9,11 @@ using AgileDiary.Data;
 using AgileDiary.Models.AgileDiaryDBModels;
 using AgileDiary.Models.ViewModels;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AgileDiary.Controllers
 {
+    [Authorize]
     public class SprintController : Controller
     {
         private readonly AgileDiaryDbContext _context;
