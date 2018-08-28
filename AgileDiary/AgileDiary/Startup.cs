@@ -14,6 +14,7 @@ using AgileDiary.Interfaces;
 using AgileDiary.Managers;
 using AgileDiary.Models.AgileDiaryDBModels;
 using AgileDiary.Models.ViewModels;
+using AgileDiary.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
@@ -48,7 +49,8 @@ namespace AgileDiary
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddScoped<ISprintCrud, SprintManager>();
+            services.AddScoped<ISprintManagerCrud, SprintManager>();
+            services.AddScoped<ISprintServiceCrud, SprintService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,7 +4,7 @@ using AgileDiary.Models.AgileDiaryDBModels;
 
 namespace AgileDiary.Interfaces
 {
-    public interface ISprintCrud
+    public interface ISprintManagerCrud
     {
         void Create(SprintDbModel sprint);
         void Edit(SprintDbModel sprint);
