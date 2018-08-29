@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using AgileDiary.Data;
-using AgileDiary.Models.AgileDiaryDBModels;
+using AgileDiary.Interfaces;
 using AgileDiary.Models.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -16,37 +11,23 @@ namespace AgileDiary.Controllers
     [Authorize]
     public class SprintController : Controller
     {
-        private readonly AgileDiaryDbContext _context;
+        private readonly ISprintServiceCrud _sprintServiceCrud;
 
-        public SprintController(AgileDiaryDbContext context)
+        public SprintController(ISprintServiceCrud sprintServiceCrud)
         {
-            _context = context;
+            _sprintServiceCrud = sprintServiceCrud;
         }
 
         // GET: Sprint
         public IActionResult Index()
         {
-            var model = _context.Sprints.ToList();
-            var viewModel = model.Select(Mapper.Map<SprintViewModel>);
-            return View("Views/Sprint/Index.cshtml", viewModel);
+            return View("Views/Sprint/Index.cshtml", _sprintServiceCrud.List());
         }
 
         // GET: Sprint/Details/5
-        public async Task<IActionResult> Details(Guid? id)
+        public async Task<IActionResult> Details(Guid id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var model = await _context.Sprints
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (model == null)
-            {
-                return NotFound();
-            }
-
-            return View(Mapper.Map<SprintViewModel>(model));
+            return View(Mapper.Map<SprintViewModel>(_sprintServiceCrud.Get(id)));
         }
 
         // GET: Sprint/Create
@@ -64,28 +45,16 @@ namespace AgileDiary.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dbModel = Mapper.Map<SprintDbModel>(sprintViewModel);
-                _context.Add(dbModel);
-                await _context.SaveChangesAsync();
+                _sprintServiceCrud.Create(sprintViewModel);
                 return RedirectToAction(nameof(Index));
             }
             return View(sprintViewModel);
         }
 
         // GET: Sprint/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
+        public async Task<IActionResult> Edit(Guid id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var sprintViewModel = await _context.Sprints.FindAsync(id);
-            if (sprintViewModel == null)
-            {
-                return NotFound();
-            }
-            return View(Mapper.Map<SprintViewModel>(sprintViewModel));
+            return View(Mapper.Map<SprintViewModel>(_sprintServiceCrud.Get(id)));
         }
 
         // POST: Sprint/Edit/5
@@ -102,43 +71,16 @@ namespace AgileDiary.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(Mapper.Map<SprintDbModel>(sprintViewModel));
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!SprintViewModelExists(sprintViewModel.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _sprintServiceCrud.Edit(_sprintServiceCrud.Get(id));
                 return RedirectToAction(nameof(Index));
             }
             return View(sprintViewModel);
         }
 
         // GET: Sprint/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var dbModel = await _context.Sprints
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (dbModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(Mapper.Map<SprintViewModel>(dbModel));
+            return View(Mapper.Map<SprintViewModel>(_sprintServiceCrud.Get(id)));
         }
 
         // POST: Sprint/Delete/5
@@ -146,15 +88,8 @@ namespace AgileDiary.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var sprintViewModel = await _context.Sprints.FindAsync(id);
-            _context.Sprints.Remove(sprintViewModel);
-            await _context.SaveChangesAsync();
+            _sprintServiceCrud.Delete(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool SprintViewModelExists(Guid id)
-        {
-            return _context.Sprints.Any(e => e.Id == id);
         }
     }
 }

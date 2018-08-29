@@ -10,8 +10,8 @@ namespace AgileDiary.Managers
 {
     public class SprintManager : ISprintManagerCrud
     {
-        private AgileDiaryDbContext _context;
-        SprintManager(AgileDiaryDbContext context)
+        private readonly AgileDiaryDbContext _context;
+        public SprintManager(AgileDiaryDbContext context)
         {
             _context = context;
         }
@@ -19,13 +19,13 @@ namespace AgileDiary.Managers
         public void Create(SprintDbModel sprint)
         {
             _context.Sprints.Add(sprint);
-            //_context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Edit(SprintDbModel sprint)
         {
             _context.Sprints.Update(sprint);
-            //_context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public SprintDbModel Get(Guid id)
@@ -46,7 +46,7 @@ namespace AgileDiary.Managers
         public void Delete(Guid id)
         {
             _context.Sprints.Remove(Get(id));
-            //_context.SaveChanges();
+            _context.SaveChanges();
         }
     }
 }

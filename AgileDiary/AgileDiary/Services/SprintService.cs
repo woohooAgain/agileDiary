@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using AgileDiary.Data;
 using AgileDiary.Interfaces;
 using AgileDiary.Models.AgileDiaryDBModels;
 using AgileDiary.Models.ViewModels;
