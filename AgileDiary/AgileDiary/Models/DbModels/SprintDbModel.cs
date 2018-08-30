@@ -7,7 +7,6 @@ namespace AgileDiary.Models.AgileDiaryDBModels
 {
     public class SprintDbModel
     {
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         [Required]
         public DateTime StartDate { get; set; }

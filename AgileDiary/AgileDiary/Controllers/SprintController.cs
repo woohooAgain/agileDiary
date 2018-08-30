@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AgileDiary.Interfaces;
@@ -90,6 +91,19 @@ namespace AgileDiary.Controllers
         {
             _sprintServiceCrud.Delete(id);
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult AddGoalWhileCreating(SprintViewModel sprintViewModel)
+        {
+            if (sprintViewModel.Goals == null)
+            {
+                sprintViewModel.Goals = new List<GoalViewModel> {new GoalViewModel()};
+            }
+            else
+            {
+                sprintViewModel.Goals.Add(new GoalViewModel());
+            }
+            return View("Views/Sprint/Create.cshtml", sprintViewModel);
         }
     }
 }
