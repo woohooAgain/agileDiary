@@ -62,7 +62,7 @@ namespace AgileDiary.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,StartDate,Reward")] SprintViewModel sprintViewModel)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,StartDate,Reward,IsActive")] SprintViewModel sprintViewModel)
         {
             if (id != sprintViewModel.Id)
             {
@@ -71,7 +71,7 @@ namespace AgileDiary.Controllers
 
             if (ModelState.IsValid)
             {
-                _sprintServiceCrud.Edit(_sprintServiceCrud.Get(id));
+                _sprintServiceCrud.Edit(sprintViewModel);
                 return RedirectToAction(nameof(Index));
             }
             return View(sprintViewModel);

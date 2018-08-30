@@ -7,11 +7,12 @@ namespace AgileDiary.Models.AgileDiaryDBModels
 {
     public class SprintDbModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         [Required]
         public DateTime StartDate { get; set; }
         public string Reward { get; set; }
+        public bool IsActive { get; set; }
 
         public virtual ICollection<WeekDbModel> Weeks { get; set; }
         public virtual ICollection<GoalDbModel> Goals { get; set; }
