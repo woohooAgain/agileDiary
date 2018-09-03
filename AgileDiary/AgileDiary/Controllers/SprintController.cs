@@ -42,7 +42,7 @@ namespace AgileDiary.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,StartDate,Reward")] SprintViewModel sprintViewModel)
+        public async Task<IActionResult> Create([Bind("Id,StartDate,Reward,IsActive,Goals")] SprintViewModel sprintViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace AgileDiary.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult AddGoalWhileCreating(SprintViewModel sprintViewModel)
+        public IActionResult AddGoalWhileCreating([Bind("Id,StartDate,Reward,IsActive, Goals")] SprintViewModel sprintViewModel)
         {
             if (sprintViewModel.Goals == null)
             {
