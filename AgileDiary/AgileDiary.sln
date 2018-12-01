@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileDiary", "AgileDiary\AgileDiary.csproj", "{3867F405-8D7E-41AE-9FBB-76B8D0791C01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileDiary", "AgileDiary\AgileDiary.csproj", "{23BD1ADC-7944-455E-B6EF-6234E6EDDEF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3867F405-8D7E-41AE-9FBB-76B8D0791C01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3867F405-8D7E-41AE-9FBB-76B8D0791C01}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3867F405-8D7E-41AE-9FBB-76B8D0791C01}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3867F405-8D7E-41AE-9FBB-76B8D0791C01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23BD1ADC-7944-455E-B6EF-6234E6EDDEF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23BD1ADC-7944-455E-B6EF-6234E6EDDEF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23BD1ADC-7944-455E-B6EF-6234E6EDDEF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23BD1ADC-7944-455E-B6EF-6234E6EDDEF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C47CD64F-1058-473E-ADBC-91FF54F44E6D}
+		SolutionGuid = {76AD41C3-44F5-4DAD-BE2B-190E34F223C6}
 	EndGlobalSection
 EndGlobal

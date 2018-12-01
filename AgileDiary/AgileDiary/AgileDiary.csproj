@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <UserSecretsId>aspnet-AgileDiary-4B1806C1-B727-4BB3-859F-C1BE82E9C7AD</UserSecretsId>
+    <UserSecretsId>aspnet-AgileDiary-2DA5092B-57BA-48F2-BAAC-AB4AE547B05E</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
