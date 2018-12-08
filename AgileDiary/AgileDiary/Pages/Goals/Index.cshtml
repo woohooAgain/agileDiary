@@ -1,0 +1,54 @@
+﻿@page
+@model AgileDiary.Pages.Goals.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Goal[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Goal[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Goal[0].Result)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Goal[0].Sprint)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Goal) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Result)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sprint.SprintId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.GoalId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.GoalId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.GoalId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

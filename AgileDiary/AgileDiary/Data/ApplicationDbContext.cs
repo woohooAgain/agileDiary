@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using AgileDiary.Models;
 
 namespace AgileDiary.Data
 {
@@ -12,5 +13,8 @@ namespace AgileDiary.Data
             : base(options)
         {
         }
+        public DbSet<Sprint> Sprint { get; set; }
+        public DbSet<Week> Week { get; set; }
+        public DbSet<Goal> Goal { get; set; }
     }
 }
