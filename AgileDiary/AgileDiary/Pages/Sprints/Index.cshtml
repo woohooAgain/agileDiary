@@ -1,12 +1,10 @@
 ﻿@page
-@model AgileDiary.Pages.Sprints.IndexModel
-
+@model AgileDiary.Models.PageModels.Sprints.IndexSprintPageModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sprints";
 }
 
-<h2>Index</h2>
-
+<h2>Sprints</h2>
 <p>
     <a asp-page="Create">Create New</a>
 </p>
@@ -14,29 +12,37 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Sprint[0].StartDate)
+                @Html.DisplayNameFor(model => model.Sprints[0].StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sprint[0].Reward)
+                @Html.DisplayNameFor(model => model.Sprints[0].EndDate)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sprints[0].Reward)
+            </th>
+            <th>
+                Actions
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Sprint) {
+        @foreach (var sprint in Model.Sprints)
+        {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
+                @sprint.StartDate.ToShortDateString()
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Reward)
+                @sprint.EndDate.ToShortDateString()
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.SprintId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.SprintId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.SprintId">Delete</a>
+                @sprint.Reward
+            </td>
+            <td>
+                <a asp-page="Edit" asp-route-id="@sprint.Id">Edit</a> |
+                <a asp-page="Details" asp-route-id="@sprint.Id">Details</a> |
+                <a asp-page="Delete" asp-route-id="@sprint.Id">Delete</a>
             </td>
         </tr>
-}
-    </tbody>
+        }
 </table>
