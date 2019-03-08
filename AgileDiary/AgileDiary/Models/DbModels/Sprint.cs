@@ -12,5 +12,6 @@ namespace AgileDiary.Models
         public List<Goal> Goals { get; set; }
         public SprintConclusion SprintConclusion { get; set; }
         public List<Habit> Habits { get; set; }
+        //public string Creator { get; set; }
     }
 }

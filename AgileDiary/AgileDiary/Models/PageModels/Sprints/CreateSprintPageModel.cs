@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using AgileDiary.Data;
 using AgileDiary.Models.ViewModels;
 using AgileDiary.Helpers.Mappers;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace AgileDiary.Models.PageModels.Sprints
 {
+    //[Authorize]
     public class CreateSprintPageModel : PageModel
     {
         private readonly ApplicationDbContext _context;
@@ -23,6 +26,8 @@ namespace AgileDiary.Models.PageModels.Sprints
 
         public IActionResult OnPost()
         {
+            ClaimsPrincipal currentUser = this.User;
+            var currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
             if (!ModelState.IsValid)
             {
                 return Page();

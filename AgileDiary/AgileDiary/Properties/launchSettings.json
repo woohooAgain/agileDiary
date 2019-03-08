@@ -3,7 +3,7 @@
     "windowsAuthentication": true,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost/AgileDiary",
+      "applicationUrl": "http://localhost:8081",
       "sslPort": 0
     },
     "iisExpress": {

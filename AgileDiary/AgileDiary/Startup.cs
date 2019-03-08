@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using AgileDiary.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AgileDiary.Helpers.ModelBinders;
 
 namespace AgileDiary
 {
@@ -41,7 +42,10 @@ namespace AgileDiary
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(opts =>
+            {
+                opts.ModelBinderProviders.Insert(0, new SprintModelBinderProvider());
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
