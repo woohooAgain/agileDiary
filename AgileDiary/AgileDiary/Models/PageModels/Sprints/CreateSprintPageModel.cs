@@ -32,6 +32,7 @@ namespace AgileDiary.Models.PageModels.Sprints
             {
                 return Page();
             }
+            Sprint.Creator = currentUserID;
             _context.Sprint.Add(Sprint.Map());
             _context.SaveChanges();
             return RedirectToPage("/Sprints/Index");

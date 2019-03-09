@@ -21,7 +21,8 @@ namespace AgileDiary.Helpers.Mappers
                 Conclusion = sprint.SprintConclusion?.Map(),
                 Goals = sprint.Goals?.Select(g => g.Map()).ToList(),
                 Weeks = sprint.Weeks?.Select(w => w.Map()).ToList(),
-                Status = CalculateStatus(startDate, endDate)
+                Status = CalculateStatus(startDate, endDate),
+                Creator = sprint.Creator
             };
         }
 
@@ -34,7 +35,8 @@ namespace AgileDiary.Helpers.Mappers
                 StartDate = sprint.StartDate.ToUniversalTime(),
                 SprintConclusion = (SprintConclusion)sprint.Conclusion?.Map(),
                 Goals = sprint.Goals?.Select(g => g.Map()).ToList(),
-                Weeks = sprint.Weeks?.Select(w => w.Map()).ToList()
+                Weeks = sprint.Weeks?.Select(w => w.Map()).ToList(),
+                Creator = sprint.Creator
             };
         }
 

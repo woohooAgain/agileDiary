@@ -26,7 +26,7 @@ namespace AgileDiary.Models.PageModels.Sprints
         {
             ClaimsPrincipal currentUser = this.User;
             var currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
-            Sprints = _context.Sprint.Select(s => s.Map()).ToList();
+            Sprints = _context.Sprint.Where(s=>s.Creator.Equals(currentUserID)).Select(s => s.Map()).ToList();
         }
     }
 }

@@ -15,6 +15,7 @@ namespace AgileDiary.Models.ViewModels
         public List<GoalViewModel> Goals { get; set; }
         public ConclusionViewModel Conclusion { get; set; }
         public SprintStatus Status { get; set; }
+        public string Creator { get; set; }
     }
 
     public enum SprintStatus
