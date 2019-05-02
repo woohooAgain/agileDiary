@@ -1,0 +1,12 @@
+﻿@page
+@model AgileDiary.Models.PageModels.Goals.SprintGoalsPageModel
+@{
+    ViewData["Title"] = "SprintGoals";
+}
+
+<h2>Goals for sprint @Model.Goals.First().SprintId</h2>
+@foreach(var goal in Model.Goals)
+{
+    <h2>@goal.Title</h2>
+    <div>@goal.Result</div>
+}

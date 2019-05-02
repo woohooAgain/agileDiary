@@ -12,7 +12,7 @@ using System.Security.Claims;
 
 namespace AgileDiary.Models.PageModels.Sprints
 {
-    //[Authorize]
+    [Authorize]
     public class CreateSprintPageModel : PageModel
     {
         private readonly ApplicationDbContext _context;
@@ -33,9 +33,16 @@ namespace AgileDiary.Models.PageModels.Sprints
                 return Page();
             }
             Sprint.Creator = currentUserID;
+            Sprint.PrepareInitialGoals();
             _context.Sprint.Add(Sprint.Map());
             _context.SaveChanges();
             return RedirectToPage("/Sprints/Index");
+        }
+
+        public IActionResult OnGet()
+        {
+            Sprint = new SprintViewModel();            
+            return Page();
         }
     }
 }

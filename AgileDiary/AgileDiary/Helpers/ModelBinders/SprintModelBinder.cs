@@ -2,6 +2,7 @@
 using System;
 using System.Threading.Tasks;
 using AgileDiary.Models.ViewModels;
+using System.Linq;
 
 namespace AgileDiary.Helpers.ModelBinders
 {
@@ -29,8 +30,9 @@ namespace AgileDiary.Helpers.ModelBinders
             else{
                 Guid.TryParse(idValues.FirstValue, out id);
             }
+            var sprintViewModel = new SprintViewModel { Id = id, StartDate = parsedStartDate, Reward = reward };
 
-            bindingContext.Result = ModelBindingResult.Success(new SprintViewModel { Id = id, StartDate = parsedStartDate, Reward = reward });
+            bindingContext.Result = ModelBindingResult.Success(sprintViewModel);
             return Task.CompletedTask;
         }
     }

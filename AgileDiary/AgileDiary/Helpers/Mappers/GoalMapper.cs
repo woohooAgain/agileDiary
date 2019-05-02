@@ -27,7 +27,7 @@ namespace AgileDiary.Helpers.Mappers
                 Title = goal.Title,
                 Description = goal.Description,
                 Result = goal.Result,
-                Milestones = goal.Milestones.Select(m => m.Map()).ToList(),
+                Milestones = goal.Milestones?.Select(m => m.Map()).ToList(),
                 SprintId = goal.SprintId
             };
         }

@@ -16,6 +16,30 @@ namespace AgileDiary.Models.ViewModels
         public ConclusionViewModel Conclusion { get; set; }
         public SprintStatus Status { get; set; }
         public string Creator { get; set; }
+
+        internal void PrepareInitialGoals()
+        {
+            Goals = new List<GoalViewModel> {
+                new GoalViewModel
+                {
+                    Id = Guid.NewGuid(),
+                    SprintId = Id,
+                    Title = "Default goal"
+                },
+                new GoalViewModel
+                {
+                    Id = Guid.NewGuid(),
+                    SprintId = Id,
+                    Title = "Default goal"
+                },
+                new GoalViewModel
+                {
+                    Id = Guid.NewGuid(),
+                    SprintId = Id,
+                    Title = "Default goal"
+                }
+            };
+        }
     }
 
     public enum SprintStatus
