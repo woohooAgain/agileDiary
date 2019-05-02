@@ -26,12 +26,26 @@ namespace AgileDiary.Models.PageModels.Sprints
 
         public IActionResult OnPost()
         {
-            throw new NotImplementedException();
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            var sprintFromDb = _context.Sprint.FirstOrDefault(s => s.SprintId.Equals(Sprint.Id));
+            if (sprintFromDb == null)
+            {
+                return RedirectToPage("Index");
+            }
+            sprintFromDb.Reward = Sprint.Reward;
+            sprintFromDb.StartDate = Sprint.StartDate;
+            _context.SaveChanges();
+            var newUrl = Url.Page("Edit", new { sprintId = Sprint.Id });
+            return Redirect(newUrl);
         }
 
         public IActionResult OnGet(string sprintId)
         {
-            Sprint = _context.Sprint.Where(s => s.SprintId.Equals(new Guid(sprintId))).Select(s => s.Map()).FirstOrDefault();
+            var guidSprintId = new Guid(sprintId);
+            Sprint = _context.Sprint.Where(s => s.SprintId.Equals(guidSprintId)).Select(s => s.Map()).FirstOrDefault();
             return Page();
         }
     }

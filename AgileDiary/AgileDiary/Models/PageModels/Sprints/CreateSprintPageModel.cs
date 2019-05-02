@@ -32,16 +32,18 @@ namespace AgileDiary.Models.PageModels.Sprints
             {
                 return Page();
             }
+            Sprint.Id = Guid.NewGuid();
             Sprint.Creator = currentUserID;
             Sprint.PrepareInitialGoals();
             _context.Sprint.Add(Sprint.Map());
             _context.SaveChanges();
-            return RedirectToPage("/Sprints/Index");
+            var newUrl = Url.Page("Edit", new { sprintId = Sprint.Id });
+            return Redirect(newUrl);
         }
 
         public IActionResult OnGet()
         {
-            Sprint = new SprintViewModel();            
+            Sprint = new SprintViewModel();
             return Page();
         }
     }
