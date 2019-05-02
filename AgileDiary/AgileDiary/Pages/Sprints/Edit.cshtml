@@ -31,17 +31,19 @@
         @if (Model?.Sprint?.Goals != null)
         {
             var d = new Dictionary<string, string>
-        {
+    {
                 { "sprintId", Model.Sprint.Id.ToString() }
             };
-            <div class="col-md-4">
-                <div class="row">
-                </div>
-                <label asp-for="Sprint.Goals" class="control-label"></label>
-                <br>
+    <div class="col-md-4">
+        <div class="row">
+        </div>
+        <label asp-for="Sprint.Goals" class="control-label"></label>
+        <br>
 
-                <a asp-page="/Goals/SprintGoals" asp-all-route-data="d">Sprint goals</a>
-            </div>
+        <a asp-page="/Goals/SprintGoals" asp-all-route-data="d">Sprint goals</a>
+        <br>
+        <a asp-page="Delete" asp-route-id="@Model.Sprint.Id" asp-all-route-data="d">Delete</a>
+    </div>
         }
     </form>
 </div>

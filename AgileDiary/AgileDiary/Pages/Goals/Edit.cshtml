@@ -1,10 +1,10 @@
 ﻿@page
-@model AgileDiary.Models.PageModels.Goals.CreateGoalPageModel
+@model AgileDiary.Models.PageModels.Goals.EditGoalPageModel
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-    <h2>Create</h2>
+<h2>Edit</h2>
 <hr />
 
 <div class="row">
@@ -13,7 +13,6 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
                 <input type="hidden" value="@Model.Goal.Id" name="Goal.Id" />
-                <input type="hidden" value="@Model.Goal.SprintId" name="Goal.SprintId" />
             </div>
             <div class="form-group">
                 <label asp-for="Goal.Title" class="control-label"></label>
@@ -31,7 +30,7 @@
                 <span asp-validation-for="Goal.Result" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Edit" class="btn btn-default" />
             </div>
         </div>
     </form>

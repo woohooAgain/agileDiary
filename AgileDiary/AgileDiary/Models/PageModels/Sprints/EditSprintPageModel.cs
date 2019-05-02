@@ -9,6 +9,7 @@ using AgileDiary.Models.ViewModels;
 using AgileDiary.Helpers.Mappers;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgileDiary.Models.PageModels.Sprints
 {
@@ -45,7 +46,7 @@ namespace AgileDiary.Models.PageModels.Sprints
         public IActionResult OnGet(string sprintId)
         {
             var guidSprintId = new Guid(sprintId);
-            Sprint = _context.Sprint.Where(s => s.SprintId.Equals(guidSprintId)).Select(s => s.Map()).FirstOrDefault();
+            Sprint = _context.Sprint.Where(s => s.SprintId.Equals(guidSprintId)).Include(s => s.Goals).Select(s => s.Map()).FirstOrDefault();
             return Page();
         }
     }

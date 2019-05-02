@@ -25,7 +25,8 @@ namespace AgileDiary.Models.PageModels.Goals
 
         public void OnGet(string sprintId)
         {
-            Goals = _context.Goal.Where(s => s.SprintId.Equals(sprintId)).Select(g => g.Map()).ToList();
+            var guidSprintId = new Guid(sprintId);
+            Goals = _context.Goal.Where(s => s.SprintId.Equals(guidSprintId)).Select(g => g.Map()).ToList();
         }
     }
 }

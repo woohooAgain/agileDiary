@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using AgileDiary.Data;
 using Microsoft.AspNetCore.Mvc;
 using AgileDiary.Models.ViewModels;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using AgileDiary.Helpers.Mappers;
 
 namespace AgileDiary.Models.PageModels.Goals
 {
@@ -25,17 +23,24 @@ namespace AgileDiary.Models.PageModels.Goals
 
         public IActionResult OnPost()
         {
-            //ClaimsPrincipal currentUser = this.User;
-            //var currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //if (!ModelState.IsValid)
-            //{
-            //    return Page();
-            //}
-            //Sprint.Creator = currentUserID;
-            //_context.Sprint.Add(Sprint.Map());
-            //_context.SaveChanges();
-            //return RedirectToPage("/Sprints/Index");
-            return new ViewResult();
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            Goal.Id = Guid.NewGuid();
+            var sprint = _context.Sprint.FirstOrDefault(s => s.SprintId.Equals(Goal.SprintId));
+            var dbGoal = Goal.Map();
+            _context.Goal.Add(dbGoal);
+            _context.SaveChanges();
+            var newUrl = Url.Page("Edit", new { goalId = Goal.Id });
+            return Redirect(newUrl);
+        }
+
+        public IActionResult OnGet(string sprintId)
+        {
+            Goal = new GoalViewModel();
+            Goal.SprintId = new Guid(sprintId);
+            return Page();
         }
     }
 }

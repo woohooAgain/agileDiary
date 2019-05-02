@@ -4,9 +4,57 @@
     ViewData["Title"] = "SprintGoals";
 }
 
-<h2>Goals for sprint @Model.Goals.First().SprintId</h2>
-@foreach(var goal in Model.Goals)
-{
-    <h2>@goal.Title</h2>
-    <div>@goal.Result</div>
-}
+<h3>Goals for sprint @Model.Goals.First().SprintId</h3>
+<p>
+    @{ 
+        var sprintId = new Dictionary<string, string>
+        {
+                { "sprintId", @Model.Goals.First().SprintId.ToString() }
+            };
+    }
+    <a asp-page="Create" asp-all-route-data="sprintId">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Goals[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Goals[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Goals[0].Result)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var goal in Model.Goals)
+        {
+            var goalId = new Dictionary<string, string>
+        {
+                { "goalId", goal.Id.ToString() }
+            };
+            <tr>
+                <td>
+                    @goal.Title
+                </td>
+                <td>
+                    @goal.Description
+                </td>
+                <td>
+                    @goal.Result
+                </td>
+                <td>
+                    <a asp-page="Edit" asp-all-route-data="goalId">Edit</a> |
+                    <a asp-page="Delete" asp-all-route-data="goalId">Delete</a>
+                </td>
+            </tr>
+        }
+</table>
+<div>
+    <a asp-page="/Sprints/Edit" asp-all-route-data="sprintId">Back to sprint</a>
+</div>
