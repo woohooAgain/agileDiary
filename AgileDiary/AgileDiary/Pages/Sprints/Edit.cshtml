@@ -32,8 +32,7 @@
             </div>
         </div>
 
-        @if (Model?.Sprint?.Goals != null)
-        {
+        @{
             var d = new Dictionary<string, string>
 {
                 { "sprintId", Model.Sprint.Id.ToString() }

@@ -9,7 +9,7 @@ namespace AgileDiary.Models
         public DateTime StartDate { get; set; }
         public WeekConclusion WeekConclusion { get; set; }
         public List<TopPriority> TopPriorities { get; set; }
-        public List<Day> Days { get; set; }
+        public List<Task> Tasks { get; set; }
 
         public Guid SprintId { get; set; }
         public Sprint Sprint { get; set; }

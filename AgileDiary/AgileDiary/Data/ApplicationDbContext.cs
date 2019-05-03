@@ -16,5 +16,6 @@ namespace AgileDiary.Data
         public DbSet<Sprint> Sprint { get; set; }
         public DbSet<Week> Week { get; set; }
         public DbSet<Goal> Goal { get; set; }
+        public DbSet<Task> Task { get; set; }
     }
 }

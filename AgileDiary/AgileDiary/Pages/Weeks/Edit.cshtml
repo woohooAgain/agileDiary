@@ -1,0 +1,41 @@
+﻿@page
+@model AgileDiary.Models.PageModels.Weeks.EditWeekPageModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit week</h2>
+@foreach(var day in Model.Week.Days)
+{
+    var taskData = new Dictionary<string, string>
+    {
+        { "weekId", Model.Week.Id.ToString() },
+        //todo: What the fuck with format?!
+        { "date", @day.Date.ToString("MM.dd.yyyy") }
+    };
+    <h4><b>@day.Date.ToShortDateString()</b> <a asp-page-handler="Task" asp-all-route-data="taskData">Add task</a></h4>
+      
+    if (@day.Tasks != null)
+    {
+        <ul>
+            @foreach(var task in @day.Tasks)
+            {
+            var taskId = new Dictionary<string, string>
+            {
+                { "taskId", task.Id.ToString() }
+            };
+                <li><a asp-page="/Tasks/Edit" asp-all-route-data="taskId">@task.Title</a></li>
+            }
+        </ul>
+    }
+}
+
+@{
+        var sprintData = new Dictionary<string, string>
+            {
+                { "sprintId", Model.Week.SprintId.ToString() }
+            };
+}
+<div>
+    <a asp-page="SprintWeeks" asp-all-route-data="sprintData">Back to Weeks List</a>
+</div>

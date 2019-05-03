@@ -7,6 +7,8 @@ namespace AgileDiary.Models.ViewModels
 {
     public class DayViewModel
     {
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; }
+        public DateTime Date { get; set; }
+        public List<TaskViewModel> Tasks { get; set; }
     }
 }

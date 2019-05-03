@@ -1,0 +1,56 @@
+﻿@page
+@model AgileDiary.Models.PageModels.Tasks.EditTaskPageModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit task</h2>
+<hr />
+<div class="row">
+    <form method="POST">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <input type="hidden" value="@Model.Task.Id" name="Task.Id" />
+                <input type="hidden" value="@Model.Task.WeekId" name="Task.WeekId" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Task.Title" class="control-label"></label>
+                <input asp-for="Task.Title" type="text" class="form-control" />
+                <span asp-validation-for="Task.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Task.Description" class="control-label"></label>
+                <input asp-for="Task.Description" type="text" class="form-control" />
+                <span asp-validation-for="Task.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Task.Date" class="control-label"></label>
+                <input asp-for="Task.Date" type="date" class="form-control" />
+                <span asp-validation-for="Task.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-default" />
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    @{
+        var taskId = new Dictionary<string, string>
+    {
+                { "taskId", Model.Task.Id.ToString() }
+            };
+    }
+    <a asp-page="Delete" asp-all-route-data="taskId">Delete task</a>
+</div>
+<div>
+    @{
+        var weekId = new Dictionary<string, string>
+        {
+                { "weekId", Model.Task.WeekId.ToString() }
+            };
+    }
+    <a asp-page="/Weeks/Edit" asp-all-route-data="weekId">Back to week</a>
+</div>
+
