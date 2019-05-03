@@ -21,6 +21,9 @@
                 @Html.DisplayNameFor(model => model.Sprints[0].Reward)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Sprints[0].Status)
+            </th>
+            <th>
                 Actions
             </th>
         </tr>
@@ -41,6 +44,9 @@
             </td>
             <td>
                 @sprint.Reward
+            </td>
+            <td>
+                @sprint.Status
             </td>
             <td>
                 <a asp-page="Edit" asp-route-id="@sprint.Id" asp-all-route-data="d">Edit</a> |

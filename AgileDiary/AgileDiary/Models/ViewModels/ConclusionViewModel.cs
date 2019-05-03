@@ -13,6 +13,8 @@ namespace AgileDiary.Models.ViewModels
         public string Lesson { get; set; }
         public string Improvement { get; set; }
         public ConclusionType Type { get; set; }
+
+        public Guid ParentId { get; set; }
     }
 
     public enum ConclusionType { Undefined, Sprint, Week }

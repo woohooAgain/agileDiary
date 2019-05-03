@@ -1,0 +1,52 @@
+﻿@page
+@model AgileDiary.Models.PageModels.Weeks.SprintWeeksPageModel
+@{
+    ViewData["Title"] = "Sprint weeks";
+}
+
+<h3>Weeks for sprint @Model.Weeks.First().SprintId</h3>
+<p>
+    @{
+        var sprintId = new Dictionary<string, string>
+    {
+                { "sprintId", @Model.Weeks.First().SprintId.ToString() }
+            };
+    }
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Weeks[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weeks[0].EndDate)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var week in Model.Weeks)
+        {
+            var goalId = new Dictionary<string, string>
+    {
+                { "weekId", week.Id.ToString() }
+            };
+            <tr>
+                <td>
+                    @week.StartDate.ToShortDateString()
+                </td>
+                <td>
+                    @week.EndDate.ToShortDateString()
+                </td>
+                <td>
+                    <a asp-page="Edit" asp-all-route-data="goalId">Edit</a>
+                </td>
+            </tr>
+        }
+</table>
+<div>
+    <a asp-page="/Sprints/Edit" asp-all-route-data="sprintId">Back to sprint</a>
+</div>

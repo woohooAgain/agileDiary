@@ -15,7 +15,8 @@ namespace AgileDiary.Helpers.Mappers
                 Improvement = sprintConclusion.Improvement,
                 Lesson = sprintConclusion.Lesson,
                 Thanks = sprintConclusion.Thanks,
-                Type = ConclusionType.Sprint
+                Type = ConclusionType.Sprint,
+                ParentId = sprintConclusion.SprintId
             };
         }
 
@@ -28,7 +29,8 @@ namespace AgileDiary.Helpers.Mappers
                 Improvement = sprintConclusion.Improvement,
                 Lesson = sprintConclusion.Lesson,
                 Thanks = sprintConclusion.Thanks,
-                Type = ConclusionType.Week
+                Type = ConclusionType.Week,
+                ParentId = sprintConclusion.WeekId
             };
         }
 
@@ -43,7 +45,8 @@ namespace AgileDiary.Helpers.Mappers
                         Achievment = conclusion.Achievment,
                         Improvement = conclusion.Improvement,
                         Lesson = conclusion.Lesson,
-                        Thanks = conclusion.Thanks
+                        Thanks = conclusion.Thanks,
+                        SprintId = conclusion.ParentId
                     };
                 case ConclusionType.Week:
                     return new WeekConclusion
@@ -52,7 +55,8 @@ namespace AgileDiary.Helpers.Mappers
                         Achievment = conclusion.Achievment,
                         Improvement = conclusion.Improvement,
                         Lesson = conclusion.Lesson,
-                        Thanks = conclusion.Thanks
+                        Thanks = conclusion.Thanks,
+                        WeekId = conclusion.ParentId
                     };
                 default:
                     throw new ArgumentOutOfRangeException(conclusion.Type.ToString());

@@ -14,10 +14,11 @@ namespace AgileDiary.Helpers.Mappers
             return new WeekViewModel
             {
                 Id = week.WeekId,
-                Conclusion = week.WeekConclusion.Map(),
+                Conclusion = week.WeekConclusion?.Map(),
                 StartDate = week.StartDate.Date,
-                TopPriorities = week.TopPriorities.Select(tp => tp.Map()).ToList(),
-                SprintId = week.SprintId
+                TopPriorities = week.TopPriorities?.Select(tp => tp.Map()).ToList(),
+                SprintId = week.SprintId,
+                EndDate = week.StartDate.ToLocalTime().Date.AddDays(MagicConstants.DaysInWeek - 1)
             };
         }
 
@@ -26,9 +27,9 @@ namespace AgileDiary.Helpers.Mappers
             return new Week
             {
                 WeekId = week.Id,
-                WeekConclusion = (WeekConclusion)week.Conclusion.Map(),
+                WeekConclusion = (WeekConclusion)week.Conclusion?.Map(),
                 StartDate = week.StartDate,
-                TopPriorities = week.TopPriorities.Select(tp => tp.Map()).ToList(),
+                TopPriorities = week.TopPriorities?.Select(tp => tp.Map()).ToList(),
                 SprintId = week.SprintId
             };
         }

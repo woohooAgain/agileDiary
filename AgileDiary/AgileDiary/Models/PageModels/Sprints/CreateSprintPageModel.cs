@@ -35,6 +35,7 @@ namespace AgileDiary.Models.PageModels.Sprints
             Sprint.Id = Guid.NewGuid();
             Sprint.Creator = currentUserID;
             Sprint.PrepareInitialGoals();
+            Sprint.PrepareWeeks();
             _context.Sprint.Add(Sprint.Map());
             _context.SaveChanges();
             var newUrl = Url.Page("Edit", new { sprintId = Sprint.Id });

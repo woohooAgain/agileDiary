@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using AgileDiary.Data;
+using AgileDiary.Helpers;
 
 namespace AgileDiary.Models.ViewModels
 {
@@ -24,21 +25,42 @@ namespace AgileDiary.Models.ViewModels
                 {
                     Id = Guid.NewGuid(),
                     SprintId = Id,
-                    Title = "Default goal"
+                    Title = "Default goal",
+                    Description = "Default description",
+                    Result = "Default result"
                 },
                 new GoalViewModel
                 {
                     Id = Guid.NewGuid(),
                     SprintId = Id,
-                    Title = "Default goal"
+                    Title = "Default goal",
+                    Description = "Default description",
+                    Result = "Default result"
                 },
                 new GoalViewModel
                 {
                     Id = Guid.NewGuid(),
                     SprintId = Id,
-                    Title = "Default goal"
+                    Title = "Default goal",
+                    Description = "Default description",
+                    Result = "Default result"
                 }
             };
+        }
+
+        internal void PrepareWeeks()
+        {
+            Weeks = new List<WeekViewModel>();
+            for (var i = 0; i < MagicConstants.NumberOfWeeks; i++)
+            {
+                var defaultWeek = new WeekViewModel
+                {
+                    SprintId = Id,
+                    StartDate = StartDate.AddDays(i * MagicConstants.DaysInWeek),
+                    Id = Guid.NewGuid()
+                };
+                Weeks.Add(defaultWeek);
+            }
         }
     }
 
