@@ -1,4 +1,6 @@
 ﻿@page
+@using  AgileDiary.Models.ViewModels
+
 @model AgileDiary.Models.PageModels.Goals.EditGoalPageModel
 @{
     ViewData["Title"] = "Edit";
@@ -33,12 +35,57 @@
                 <input type="submit" value="Edit" class="btn btn-default" />
             </div>
         </div>
+        <div class="col-md-8">
+            <h4>Tasks connencted with the goal</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Goal.Tasks[0].Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Goal.Tasks[0].Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Goal.Tasks[0].Date)
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var task in Model.Goal.Tasks ?? new List<TaskViewModel>())
+                    {
+                        var taskId = new Dictionary<string, string>
+                                {
+                            { "taskId", task.Id.ToString() }
+                        };
+                        <tr>
+                            <td>
+                                @task.Title
+                            </td>
+                            <td>
+                                @task.Description
+                            </td>
+                            <td>
+                                @task.Date.ToShortDateString()
+                            </td>
+                            <td>
+                                <a asp-page="/Tasks/Edit" asp-all-route-data="taskId">Edit</a> |
+                                <a asp-page="/Tasks/Delete" asp-all-route-data="taskId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </form>
 </div>
 <div>
     @{
         var d = new Dictionary<string, string>
-            {
+    {
                 { "sprintId", Model.Goal.SprintId.ToString() }
             };
     }

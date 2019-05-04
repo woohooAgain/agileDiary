@@ -46,7 +46,13 @@ namespace AgileDiary.Models.PageModels.Goals
         {
             var guidGoalId = new Guid(goalId);
             Goal = _context.Goal.Where(s => s.GoalId.Equals(guidGoalId)).Select(g => g.Map()).FirstOrDefault();
+            FetchTasks();
             return Page();
+        }
+
+        private void FetchTasks()
+        {
+            Goal.Tasks = _context.Task.Where(t => t.GoalId.Equals(Goal.Id)).Select(t => t.Map()).ToList();
         }
     }
 }

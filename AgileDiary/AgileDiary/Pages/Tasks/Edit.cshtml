@@ -29,6 +29,29 @@
                 <input asp-for="Task.Date" type="date" class="form-control" />
                 <span asp-validation-for="Task.Date" class="text-danger"></span>
             </div>
+            @if (Model.Task.GoalId.Equals(default(Guid)))
+            {
+                <div>
+                    <label asp-for="Task.GoalId" class="control-label"></label>
+                    <br>
+                    <select asp-for="Task.GoalId" asp-items="@new SelectList(Model.Task.PossibleGoals)">
+                        <option value="">Choose goal</option>
+                    </select>
+                </div>
+            }
+            else
+            {
+                var goalId = new Dictionary<string, string>
+                {
+                    { "goalId", Model.Task.GoalId.ToString() }
+                };
+                <div class="form-group">
+                    <label asp-for="Task.GoalId" class="control-label"></label>
+                    <br>
+                    <a asp-page="/Goals/Edit" asp-all-route-data="goalId">@Model.Task.GoalId</a>
+                </div>
+            }
+            <hr />
             <div class="form-group">
                 <input type="submit" value="Edit" class="btn btn-default" />
             </div>

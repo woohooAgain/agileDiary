@@ -12,6 +12,7 @@ namespace AgileDiary.Models.ViewModels
         public string Description { get; set; }
         public List<MilestoneViewModel> Milestones { get; set; }
         public string Result { get; set; }
+        public List<TaskViewModel> Tasks { get; set; }
 
         public Guid SprintId { get; set; }
     }

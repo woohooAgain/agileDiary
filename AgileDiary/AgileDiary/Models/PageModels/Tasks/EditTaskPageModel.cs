@@ -28,6 +28,7 @@ namespace AgileDiary.Models.PageModels.Tasks
         {
             var guidTaskId = new Guid(taskId);
             Task = _context.Task.Where(t => t.TaskId.Equals(guidTaskId)).Select(t => t.Map()).FirstOrDefault();
+            PrepareGoals();
             return Page();
         }
 
@@ -42,13 +43,19 @@ namespace AgileDiary.Models.PageModels.Tasks
             {
                 return RedirectToPage("Index");
             }
-            //taskFromDb = Task.Map();
             taskFromDb.Title = Task.Title;
             taskFromDb.Description = Task.Description;
             taskFromDb.Date = Task.Date;
+            taskFromDb.GoalId = Task.GoalId;
             _context.SaveChanges();
             var newUrl = Url.Page("Edit", new { taskId = Task.Id });
             return Redirect(newUrl);
+        }
+
+        private void PrepareGoals()
+        {
+            var sprintId = _context.Week.Where(w => w.WeekId.Equals(Task.WeekId)).Select(w => w.SprintId).FirstOrDefault();
+            Task.PossibleGoals = _context.Goal.Where(g => g.SprintId.Equals(sprintId)).Select(g => g.GoalId).ToList();
         }
     }
 }

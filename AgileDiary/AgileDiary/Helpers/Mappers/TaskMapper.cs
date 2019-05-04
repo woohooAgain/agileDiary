@@ -16,7 +16,8 @@ namespace AgileDiary.Helpers.Mappers
                 Date = task.Date,
                 Description = task.Description,
                 Title = task.Title,
-                WeekId = task.WeekId
+                WeekId = task.WeekId,
+                GoalId = task.GoalId
             };
         }
 
@@ -28,7 +29,8 @@ namespace AgileDiary.Helpers.Mappers
                 Date = task.Date,
                 Description = task.Description,
                 Title = task.Title,
-                WeekId = task.WeekId
+                WeekId = task.WeekId,
+                GoalId = task.GoalId
             };
         }
     }

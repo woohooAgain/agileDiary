@@ -11,7 +11,6 @@ namespace AgileDiary.Models
         public Guid GoalId { get; set; }
 
         public Guid WeekId { get; set; }
-        public Week Week { get; set; }
-        
+        public Week Week { get; set; }        
     }
 }
