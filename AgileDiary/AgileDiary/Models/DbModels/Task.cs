@@ -8,8 +8,10 @@ namespace AgileDiary.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
+        public Guid GoalId { get; set; }
 
         public Guid WeekId { get; set; }
         public Week Week { get; set; }
+        
     }
 }
