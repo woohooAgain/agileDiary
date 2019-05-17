@@ -22,11 +22,13 @@ namespace AgileDiary.Models.PageModels.Goals
 
         [BindProperty]
         public List<GoalViewModel> Goals { get; set; }
+        [BindProperty]
+        public Guid SprintId { get; set; }
 
         public void OnGet(string sprintId)
         {
-            var guidSprintId = new Guid(sprintId);
-            Goals = _context.Goal.Where(s => s.SprintId.Equals(guidSprintId)).Select(g => g.Map()).ToList();
+            SprintId = new Guid(sprintId);
+            Goals = _context.Goal.Where(s => s.SprintId.Equals(SprintId)).Select(g => g.Map()).ToList();
         }
     }
 }
