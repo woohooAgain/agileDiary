@@ -58,7 +58,7 @@
                     @foreach (var task in Model.Goal.Tasks ?? new List<TaskViewModel>())
                     {
                         var taskId = new Dictionary<string, string>
-                                {
+                        {
                             { "taskId", task.Id.ToString() }
                         };
                         <tr>

@@ -27,8 +27,9 @@ namespace AgileDiary.Models.PageModels.Weeks
 
         public void OnGet(string sprintId)
         {
-            SprintId = new Guid(sprintId);
-            Weeks = _context.Week.Where(w => w.SprintId.Equals(SprintId)).Select(w => w.Map()).OrderBy(w => w.StartDate).ToList();
+            var guidSprintId = new Guid(sprintId);
+            Weeks = _context.Week.Where(w => w.SprintId.Equals(guidSprintId)).Select(w => w.Map()).OrderBy(w => w.StartDate).ToList();
+            SprintId = guidSprintId;
         }
     }
 }

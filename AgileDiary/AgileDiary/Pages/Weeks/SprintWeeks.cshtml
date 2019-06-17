@@ -4,7 +4,7 @@
     ViewData["Title"] = "Sprint weeks";
 }
 
-<h3>Weeks for sprint @Model.Weeks.First().SprintId</h3>
+<h3>Weeks for sprint @Model.SprintId</h3>
 <p>
     @{
         var sprintId = new Dictionary<string, string>
@@ -17,10 +17,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Weeks[0].StartDate)
+                @Html.DisplayNameFor(model => model.Weeks.FirstOrDefault().StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Weeks[0].EndDate)
+                @Html.DisplayNameFor(model => model.Weeks.FirstOrDefault().EndDate)
             </th>
             <th>
                 Actions
