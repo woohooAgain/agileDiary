@@ -43,8 +43,7 @@ namespace AgileDiary.Helpers.Mappers
                 StartDate = week.StartDate.Date,
                 TopPriorities = week.TopPriorities?.Select(tp => tp.Map()).ToList(),
                 SprintId = week.SprintId,
-                EndDate = week.StartDate.ToLocalTime().Date.AddDays(MagicConstants.DaysInWeek - 1),
-                Days = dayList
+                EndDate = week.StartDate.ToLocalTime().Date.AddDays(MagicConstants.DaysInWeek - 1)
             };
         }
 
@@ -70,3 +69,6 @@ namespace AgileDiary.Helpers.Mappers
         }
     }
 }
+
+                EndDate = week.StartDate.ToLocalTime().Date.AddDays(MagicConstants.DaysInWeek - 1),
+                Days = dayList
