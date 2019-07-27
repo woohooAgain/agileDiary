@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Administrator\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Administrator\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_AgileDiary.1643972916.00" t="ExcludeRecursive" />
+    <e p="F:\Storage\Git\AgileDiary\AgileDiary2\AgileDiary\AgileDiary" t="IncludeFlat">
+      <e p="AgileDiary" t="IncludeRecursive">
+        <e p="AgileDiary.csproj" t="IncludeRecursive" />
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="Areas" t="Include">
+          <e p="Identity" t="Include">
+            <e p="Pages" t="Include">
+              <e p="_ViewStart.cshtml" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Data" t="Include">
+          <e p="ApplicationDbContext.cs" t="Include" />
+          <e p="Migrations" t="Include">
+            <e p="00000000000000_CreateIdentitySchema.cs" t="Include" />
+            <e p="00000000000000_CreateIdentitySchema.Designer.cs" t="Include" />
+            <e p="20181208071024_Initial.cs" t="Include" />
+            <e p="20181208071024_Initial.Designer.cs" t="Include" />
+            <e p="20190309134306_AddSprintCreator.cs" t="Include" />
+            <e p="20190309134306_AddSprintCreator.Designer.cs" t="Include" />
+            <e p="20190503084452_AddTasksToWeek.cs" t="Include" />
+            <e p="20190503084452_AddTasksToWeek.Designer.cs" t="Include" />
+            <e p="20190503134605_UpgradeDbModel.cs" t="Include" />
+            <e p="20190503134605_UpgradeDbModel.Designer.cs" t="Include" />
+            <e p="20190504105331_AddLinkFromTaskToGoal.cs" t="Include" />
+            <e p="20190504105331_AddLinkFromTaskToGoal.Designer.cs" t="Include" />
+            <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Diagrams" t="Include">
+          <e p="Diagram1.dgml" t="Include" />
+        </e>
+        <e p="Helpers" t="Include">
+          <e p="MagicConstants.cs" t="Include" />
+          <e p="Mappers" t="Include">
+            <e p="ConclusionMapper.cs" t="Include" />
+            <e p="GoalMapper.cs" t="Include" />
+            <e p="MilestoneMapper.cs" t="Include" />
+            <e p="SprintMapper.cs" t="Include" />
+            <e p="TaskMapper.cs" t="Include" />
+            <e p="TopPriorityMapper.cs" t="Include" />
+            <e p="UserMapper.cs" t="Include" />
+            <e p="WeekMapper.cs" t="Include" />
+          </e>
+          <e p="ModelBinders" t="Include">
+            <e p="SprintModelBinder.cs" t="Include" />
+            <e p="SprintModelBinderProvider.cs" t="Include" />
+          </e>
+        </e>
+        <e p="logs" t="Include">
+          <e p="stdout_20190717184555_10276.log" t="Include" />
+          <e p="stdout_20190717184557_10276.log" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="DbModels" t="Include">
+            <e p="Day.cs" t="Include" />
+            <e p="Goal.cs" t="Include" />
+            <e p="GoalWeekResult.cs" t="Include" />
+            <e p="Habit.cs" t="Include" />
+            <e p="Milestone.cs" t="Include" />
+            <e p="Sprint.cs" t="Include" />
+            <e p="SprintConclusion.cs" t="Include" />
+            <e p="Task.cs" t="Include" />
+            <e p="TopPriority.cs" t="Include" />
+            <e p="Week.cs" t="Include" />
+            <e p="WeekConclusion.cs" t="Include" />
+          </e>
+          <e p="PageModels" t="Include">
+            <e p="Goals" t="Include">
+              <e p="CreateGoalPageModel.cs" t="Include" />
+              <e p="DeleteGoalPageModel.cs" t="Include" />
+              <e p="EditGoalPageModel.cs" t="Include" />
+              <e p="SprintGoalsPageModel.cs" t="Include" />
+            </e>
+            <e p="Sprints" t="Include">
+              <e p="CreateSprintPageModel.cs" t="Include" />
+              <e p="DeleteSprintPageModel.cs" t="Include" />
+              <e p="EditSprintPageModel.cs" t="Include" />
+              <e p="IndexSprintPageModel.cs" t="Include" />
+            </e>
+            <e p="Tasks" t="Include">
+              <e p="DeleteTaskPageModel.cs" t="Include" />
+              <e p="EditTaskPageModel.cs" t="Include" />
+            </e>
+            <e p="Users" t="Include">
+              <e p="IndexUsersPageModel.cs" t="Include" />
+            </e>
+            <e p="Weeks" t="Include">
+              <e p="EditWeekPageModel.cs" t="Include" />
+              <e p="SprintWeekPageModel.cs" t="Include" />
+            </e>
+          </e>
+          <e p="ViewModels" t="Include">
+            <e p="ConclusionViewModel.cs" t="Include" />
+            <e p="DayViewModel.cs" t="Include" />
+            <e p="GoalViewModel.cs" t="Include" />
+            <e p="MilestoneViewModel.cs" t="Include" />
+            <e p="SprintViewModel.cs" t="Include" />
+            <e p="TaskViewModel.cs" t="Include" />
+            <e p="TopPriorityViewModel.cs" t="Include" />
+            <e p="UserViewModel.cs" t="Include" />
+            <e p="WeekViewModel.cs" t="Include" />
+          </e>
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="AgileDiary.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Pages" t="Include">
+          <e p="_ViewImports.cshtml" t="Include" />
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="About.cshtml" t="Include" />
+          <e p="About.cshtml.cs" t="Include" />
+          <e p="Contact.cshtml" t="Include" />
+          <e p="Contact.cshtml.cs" t="Include" />
+          <e p="Error.cshtml" t="Include" />
+          <e p="Error.cshtml.cs" t="Include" />
+          <e p="Goals" t="Include">
+            <e p="Create.cshtml" t="Include" />
+            <e p="Delete.cshtml" t="Include" />
+            <e p="Edit.cshtml" t="Include" />
+            <e p="SprintGoals.cshtml" t="Include" />
+          </e>
+          <e p="Index.cshtml" t="Include" />
+          <e p="Index.cshtml.cs" t="Include" />
+          <e p="Privacy.cshtml" t="Include" />
+          <e p="Privacy.cshtml.cs" t="Include" />
+          <e p="Shared" t="Include">
+            <e p="_CookieConsentPartial.cshtml" t="Include" />
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="_LoginPartial.cshtml" t="Include" />
+            <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+          </e>
+          <e p="Sprints" t="Include">
+            <e p="Create.cshtml" t="Include" />
+            <e p="Delete.cshtml" t="Include" />
+            <e p="Edit.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Tasks" t="Include">
+            <e p="Delete.cshtml" t="Include" />
+            <e p="Edit.cshtml" t="Include" />
+          </e>
+          <e p="Users" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Weeks" t="Include">
+            <e p="Edit.cshtml" t="Include" />
+            <e p="SprintWeeks.cshtml" t="Include" />
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+          <e p="PublishProfiles" t="Include">
+            <e p="FolderProfile.pubxml" t="Include" />
+            <e p="FTP.pubxml" t="Include" />
+            <e p="WebDeploy.pubxml" t="Include" />
+          </e>
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="web.config" t="Include" />
+        <e p="wwwroot" t="Include">
+          <e p="css" t="Include">
+            <e p="site.css" t="Include" />
+            <e p="site.min.css" t="Include" />
+          </e>
+          <e p="favicon.ico" t="Include" />
+          <e p="images" t="Include">
+            <e p="banner1.svg" t="Include" />
+            <e p="banner2.svg" t="Include" />
+            <e p="banner3.svg" t="Include" />
+          </e>
+          <e p="js" t="Include">
+            <e p="site.js" t="Include" />
+            <e p="site.min.js" t="Include" />
+          </e>
+          <e p="lib" t="Include">
+            <e p="bootstrap" t="Include">
+              <e p=".bower.json" t="Include" />
+              <e p="dist" t="Include">
+                <e p="css" t="Include">
+                  <e p="bootstrap-theme.css" t="Include" />
+                  <e p="bootstrap-theme.css.map" t="Include" />
+                  <e p="bootstrap-theme.min.css" t="Include" />
+                  <e p="bootstrap-theme.min.css.map" t="Include" />
+                  <e p="bootstrap.css" t="Include" />
+                  <e p="bootstrap.css.map" t="Include" />
+                  <e p="bootstrap.min.css" t="Include" />
+                  <e p="bootstrap.min.css.map" t="Include" />
+                </e>
+                <e p="fonts" t="Include">
+                  <e p="glyphicons-halflings-regular.eot" t="Include" />
+                  <e p="glyphicons-halflings-regular.svg" t="Include" />
+                  <e p="glyphicons-halflings-regular.ttf" t="Include" />
+                  <e p="glyphicons-halflings-regular.woff" t="Include" />
+                  <e p="glyphicons-halflings-regular.woff2" t="Include" />
+                </e>
+                <e p="js" t="Include">
+                  <e p="bootstrap.js" t="Include" />
+                  <e p="bootstrap.min.js" t="Include" />
+                  <e p="npm.js" t="Include" />
+                </e>
+              </e>
+              <e p="LICENSE" t="Include" />
+            </e>
+            <e p="jquery" t="Include">
+              <e p=".bower.json" t="Include" />
+              <e p="dist" t="Include">
+                <e p="jquery.js" t="Include" />
+                <e p="jquery.min.js" t="Include" />
+                <e p="jquery.min.map" t="Include" />
+              </e>
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+            <e p="jquery-validation" t="Include">
+              <e p=".bower.json" t="Include" />
+              <e p="dist" t="Include">
+                <e p="additional-methods.js" t="Include" />
+                <e p="additional-methods.min.js" t="Include" />
+                <e p="jquery.validate.js" t="Include" />
+                <e p="jquery.validate.min.js" t="Include" />
+              </e>
+              <e p="LICENSE.md" t="Include" />
+            </e>
+            <e p="jquery-validation-unobtrusive" t="Include">
+              <e p=".bower.json" t="Include" />
+              <e p="jquery.validate.unobtrusive.js" t="Include" />
+              <e p="jquery.validate.unobtrusive.min.js" t="Include" />
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="AgileDiary.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
