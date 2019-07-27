@@ -5,3 +5,5 @@
 AgileDiary/AgileDiary/Properties/PublishProfiles/FolderProfile\.pubxml
 
 AgileDiary/\.vs/
+
+*.log

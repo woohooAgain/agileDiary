@@ -13,5 +13,14 @@ namespace AgileDiary.Helpers.Mappers
                 Email = user.Email
             };
         }
+
+        public static IdentityUser Map(this UserViewModel user)
+        {
+            return new IdentityUser
+            {
+                Id = user.Id,
+                Email = user.Email
+            };
+        }
     }
 }

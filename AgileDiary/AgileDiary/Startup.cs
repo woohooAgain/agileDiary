@@ -37,7 +37,9 @@ namespace AgileDiary
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    //switch connection string if necessary
+                    //Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("NotebookConnection")));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();

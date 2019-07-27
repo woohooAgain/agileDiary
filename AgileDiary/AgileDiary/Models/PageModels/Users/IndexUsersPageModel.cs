@@ -14,16 +14,27 @@ namespace AgileDiary.Models.PageModels.Users
     public class IndexUsersPageModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-        public IndexUsersPageModel(ApplicationDbContext context)
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public IndexUsersPageModel(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public List<UserViewModel> Users { get; set; }
 
-        public void OnGet()
+        public async void OnGet()
         {
-            Users = _context.Users.Select(u => u.Map()).ToList();
+            Users = new List<UserViewModel>();
+            var users = _context.Users;
+            foreach(var u in users)
+            {
+                var user = u.Map();
+                var roles = await _userManager.GetRolesAsync(u);
+                user.Role = roles.FirstOrDefault();
+                Users.Add(user);
+            }
         }
     }
 }

@@ -1,0 +1,33 @@
+﻿@page
+@model AgileDiary.Models.PageModels.Users.CreateUserPageModel
+@{
+}
+<h2>Create user</h2>
+<hr />
+<div class="row">
+    <form method="POST">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <input type="hidden" value="@Model.NewUser.Id" name="Sprint.Id" />
+            </div>
+            <div class="form-group">
+                <label asp-for="NewUser.Email" class="control-label"></label>
+                <input asp-for="NewUser.Email" class="form-control" />
+                <span asp-validation-for="NewUser.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewUser.Role" class="control-label"></label>
+                <input asp-for="NewUser.Role" class="form-control" />
+                <span asp-validation-for="NewUser.Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
