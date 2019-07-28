@@ -3,6 +3,7 @@ using AgileDiary.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 
 namespace AgileDiary.Models.PageModels.Users
 {
@@ -24,13 +25,13 @@ namespace AgileDiary.Models.PageModels.Users
             return Page();
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
             var dbUser = NewUser.Map();
-            _userManager.CreateAsync(dbUser).Wait();
+            var userResult = await _userManager.CreateAsync(dbUser);
             if (!string.IsNullOrEmpty(NewUser.Role))
             {
-                _userManager.AddToRoleAsync(dbUser, NewUser.Role).Wait();
+                var roleResult = await _userManager.AddToRoleAsync(dbUser, NewUser.Role);
             }            
             return RedirectToPage("Index");
         }

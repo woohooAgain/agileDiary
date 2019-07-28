@@ -44,22 +44,22 @@ namespace AgileDiary
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            //services.AddAuthentication()
-            //.AddFacebook(options =>
-            //{
-            //    options.AppId = Configuration["Facebook:AppId"];
-            //    options.AppSecret = Configuration["Facebook:AppSecret"];
-            //})
-            //.AddGoogle(options =>
-            //{
-            //    options.ClientId = Configuration["Google:ClientId"];
-            //    options.ClientSecret = Configuration["Google:ClientSecret"];
-            //})
-            //.AddMicrosoftAccount(options =>
-            //{
-            //    options.ClientId = Configuration["Microsoft:ClientId"];
-            //    options.ClientSecret = Configuration["Microsoft:ClientSecret"];
-            //});
+            services.AddAuthentication()
+            .AddFacebook(options =>
+            {
+                options.AppId = Configuration["Facebook:AppId"];
+                options.AppSecret = Configuration["Facebook:AppSecret"];
+            })
+            .AddGoogle(options =>
+            {
+                options.ClientId = Configuration["Google:ClientId"];
+                options.ClientSecret = Configuration["Google:ClientSecret"];
+            })
+            .AddMicrosoftAccount(options =>
+            {
+                options.ClientId = Configuration["Microsoft:ClientId"];
+                options.ClientSecret = Configuration["Microsoft:ClientSecret"];
+            });
 
             services.AddMvc(opts =>
             {

@@ -19,7 +19,8 @@ namespace AgileDiary.Helpers.Mappers
             return new IdentityUser
             {
                 Id = user.Id,
-                Email = user.Email
+                Email = user.Email,
+                UserName = user.Email
             };
         }
     }
