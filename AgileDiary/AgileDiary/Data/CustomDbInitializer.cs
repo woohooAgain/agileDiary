@@ -1,44 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
+using AgileDiary.Helpers.MagicConstants;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 
 namespace AgileDiary.Data
 {
     public static class CustomDbInitializer
     {
-        public static async Task AssignAdminRole(IServiceProvider service, ApplicationDbContext context)
+        public static void AssignAdminRole(IServiceProvider service)
         {
             var roleManager = service.GetRequiredService<RoleManager<IdentityRole>>();
-            await EnsureRolesAsync(roleManager);
+            EnsureRolesAsync(roleManager);
             var userManager = service.GetRequiredService<UserManager<IdentityUser>>();
-            await EnsureTestAdminAsync(userManager);
+            EnsureTestAdminAsync(userManager);
         }
 
-        private static async Task EnsureRolesAsync(
+        private static void EnsureRolesAsync(
             RoleManager<IdentityRole> roleManager)
         {
-            var alreadyExists = await roleManager
-                .RoleExistsAsync("admin");
-
-            if (alreadyExists) return;
-
-            await roleManager.CreateAsync(
-                new IdentityRole("admin"));
+            RoleSetter(roleManager, MagicStrings.AdminRole);
+            RoleSetter(roleManager, MagicStrings.SprinterRole);
         }
 
-        private static async Task EnsureTestAdminAsync(
-            UserManager<IdentityUser> userManager)
+        private static void RoleSetter(RoleManager<IdentityRole> roleManager, string roleName)
         {
-            var testAdmin = await userManager.Users
+            var sprinterRoleExists = roleManager
+                .RoleExistsAsync(roleName).Result;
+
+            if (!sprinterRoleExists)
+            {
+                roleManager.CreateAsync(
+                    new IdentityRole(roleName)).Wait();
+            }
+        }
+
+        private static void EnsureTestAdminAsync(UserManager<IdentityUser> userManager)
+        {
+            var testAdmin = userManager.Users
                 .Where(x => x.UserName == "admin@ad.com")
-                .SingleOrDefaultAsync();
+                .SingleOrDefaultAsync().Result;
 
             if (testAdmin != null) return;
 
@@ -47,10 +49,10 @@ namespace AgileDiary.Data
                 UserName = "admin@ad.com",
                 Email = "admin@ad.com"
             };
-            await userManager.CreateAsync(
-                testAdmin, "52CnhIfnDsdDjh_");
-            await userManager.AddToRoleAsync(
-                testAdmin, "admin");
+            userManager.CreateAsync(
+                testAdmin, "52CnhIfnDsdDjh_").Wait();
+            userManager.AddToRoleAsync(
+                testAdmin, "admin").Wait();
         }
     }
 }

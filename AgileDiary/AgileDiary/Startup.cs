@@ -38,8 +38,8 @@ namespace AgileDiary
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     //switch connection string if necessary
-                    //Configuration.GetConnectionString("DefaultConnection")));
-                    Configuration.GetConnectionString("NotebookConnection")));
+                    Configuration.GetConnectionString("DefaultConnection")));
+                    //Configuration.GetConnectionString("NotebookConnection")));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -68,7 +68,8 @@ namespace AgileDiary
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider, UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -88,9 +89,9 @@ namespace AgileDiary
             app.UseAuthentication();
 
             app.UseMvc();
-            
+
             serviceProvider.GetService<ApplicationDbContext>().Database.EnsureCreated();
-            
+            CustomDbInitializer.AssignAdminRole(serviceProvider);
         }
     }
 }

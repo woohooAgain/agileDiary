@@ -12,7 +12,7 @@ namespace AgileDiary.Helpers.Mappers
         public static WeekViewModel Map(this Week week)
         {
             var dayList = new List<DayViewModel>();
-            for(var i = 0; i< MagicConstants.DaysInWeek; i++)
+            for(var i = 0; i< MagicNumbers.DaysInWeek; i++)
             {
                 dayList.Add(new DayViewModel
                 {
@@ -43,7 +43,7 @@ namespace AgileDiary.Helpers.Mappers
                 StartDate = week.StartDate.Date,
                 TopPriorities = week.TopPriorities?.Select(tp => tp.Map()).ToList(),
                 SprintId = week.SprintId,
-                EndDate = week.StartDate.ToLocalTime().Date.AddDays(MagicConstants.DaysInWeek - 1),
+                EndDate = week.StartDate.ToLocalTime().Date.AddDays(MagicNumbers.DaysInWeek - 1),
                 Days = dayList
             };
         }

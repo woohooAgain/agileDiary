@@ -24,14 +24,14 @@ namespace AgileDiary.Models.PageModels.Users
 
         public List<UserViewModel> Users { get; set; }
 
-        public async void OnGet()
+        public void OnGet()
         {
             Users = new List<UserViewModel>();
             var users = _context.Users;
             foreach(var u in users)
             {
                 var user = u.Map();
-                var roles = await _userManager.GetRolesAsync(u);
+                var roles = _userManager.GetRolesAsync(u).Result;
                 user.Role = roles.FirstOrDefault();
                 Users.Add(user);
             }

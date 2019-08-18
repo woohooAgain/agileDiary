@@ -1,27 +1,24 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using AgileDiary.Helpers.MagicConstants;
 
 namespace AgileDiary.Models.PageModels.Users
 {
     public class MakeAdminPageModel : PageModel
     {
-        private UserManager<IdentityRole> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public MakeAdminPageModel(UserManager<IdentityRole> userManager)
+        public MakeAdminPageModel(UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
         }
 
         public IActionResult OnGet(string userId)
         {
-            var guidId = new Guid(userId);
-            var user = _userManager.Users.First(u => u.Id.Equals(guidId));
-            _userManager.AddToRoleAsync(user, "admin").Wait();
+            var user = _userManager.Users.First(u => u.Id.Equals(userId));
+            _userManager.AddToRoleAsync(user, MagicStrings.AdminRole).Wait();
             return RedirectToPage("Index");
         }
     }

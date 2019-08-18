@@ -17,24 +17,13 @@ namespace AgileDiary
         public static void Main(string[] args)
         {
             var host = CreateWebHostBuilder(args).Build();
-            using (var scope = host.Services.CreateScope())
-            {
-                var services = scope.ServiceProvider;
-                try
-                {
-                    var context = services.GetRequiredService<ApplicationDbContext>();
-                    CustomDbInitializer.AssignAdminRole(services, context).Wait();
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
             host.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                //.UseIISIntegration()
+                //.UseIIS()
                 .UseStartup<Startup>();
     }
 }
