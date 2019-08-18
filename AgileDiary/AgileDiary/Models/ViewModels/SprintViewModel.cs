@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using AgileDiary.Data;
-using AgileDiary.Helpers;
+using AgileDiary.Helpers.MagicConstants;
 
 namespace AgileDiary.Models.ViewModels
 {

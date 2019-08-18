@@ -52,7 +52,7 @@ namespace AgileDiary.Data
             userManager.CreateAsync(
                 testAdmin, "52CnhIfnDsdDjh_").Wait();
             userManager.AddToRoleAsync(
-                testAdmin, "admin").Wait();
+                testAdmin, MagicStrings.AdminRole).Wait();
         }
     }
 }

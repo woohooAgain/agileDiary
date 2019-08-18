@@ -2,7 +2,7 @@
 using System.Linq;
 using AgileDiary.Models.ViewModels;
 using AgileDiary.Models;
-using AgileDiary.Data;
+using AgileDiary.Helpers.MagicConstants;
 
 namespace AgileDiary.Helpers.Mappers
 {
