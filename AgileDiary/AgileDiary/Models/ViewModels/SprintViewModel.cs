@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using AgileDiary.Data;
-using AgileDiary.Helpers;
+using AgileDiary.Helpers.MagicConstants;
 
 namespace AgileDiary.Models.ViewModels
 {
@@ -51,12 +50,12 @@ namespace AgileDiary.Models.ViewModels
         internal void PrepareWeeks()
         {
             Weeks = new List<WeekViewModel>();
-            for (var i = 0; i < MagicConstants.NumberOfWeeks; i++)
+            for (var i = 0; i < MagicNumbers.NumberOfWeeks; i++)
             {
                 var defaultWeek = new WeekViewModel
                 {
                     SprintId = Id,
-                    StartDate = StartDate.AddDays(i * MagicConstants.DaysInWeek),
+                    StartDate = StartDate.AddDays(i * MagicNumbers.DaysInWeek),
                     Id = Guid.NewGuid()
                 };
                 Weeks.Add(defaultWeek);

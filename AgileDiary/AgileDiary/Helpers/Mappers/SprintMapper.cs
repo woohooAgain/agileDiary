@@ -2,7 +2,7 @@
 using System.Linq;
 using AgileDiary.Models.ViewModels;
 using AgileDiary.Models;
-using AgileDiary.Data;
+using AgileDiary.Helpers.MagicConstants;
 
 namespace AgileDiary.Helpers.Mappers
 {
@@ -11,7 +11,7 @@ namespace AgileDiary.Helpers.Mappers
         public static SprintViewModel Map(this Sprint sprint)
         {
             var startDate = sprint.StartDate.ToLocalTime().Date;
-            var endDate = sprint.StartDate.ToLocalTime().Date.AddDays(MagicConstants.NumberOfWeeks*MagicConstants.DaysInWeek);
+            var endDate = sprint.StartDate.ToLocalTime().Date.AddDays(MagicNumbers.NumberOfWeeks*MagicNumbers.DaysInWeek);
             return new SprintViewModel()
             {
                 Id = sprint.SprintId,
